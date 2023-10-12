@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:main/screens/diagnosis_check.dart';
-import 'package:main/screens/main_screen.dart';
+import 'package:main/screens/diagnosis_check.dart'; // 자가진단 페이지
+{import 'package:main/screens/main_screen.dart';} // 메인홈
 
 
 class SelfDiagnosis extends StatelessWidget {
@@ -8,8 +8,6 @@ class SelfDiagnosis extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final DeviceSize = MediaQuery.of(context).size;
-    //final appBarSize = AppBar().preferredSize.height;
     return MaterialApp(
       theme: ThemeData(scaffoldBackgroundColor: Color(0xFFC3E9E4)),
       home: Scaffold(
@@ -25,7 +23,7 @@ class SelfDiagnosis extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => IntroScreen(), // 결과 페이지로 이동
+                builder: (context) => {IntroScreen()}, // 메인 홈 페이지로 이동
               ),
             );
           }),
@@ -37,7 +35,7 @@ class SelfDiagnosis extends StatelessWidget {
               SizedBox(height: (MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top) * 0.05,),
               Container(
                 child: Container(
-                  child: Image.asset('assets/doctor.png'),
+                  child: Image.asset({'assets/doctor.png'}), // 의사 사진 추가
                   height: (MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top) * 0.45,
                   width: (MediaQuery.of(context).size.width - MediaQuery.of(context).padding.left) * 0.75,
                 ),
@@ -73,7 +71,7 @@ class SelfDiagnosis extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => PageDiagnosis()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => PageDiagnosis())); // 자가 진단 페이지로 이동
                         },
                         child: Text("Start", style: TextStyle(fontSize: 25, shadows:[
                           Shadow(color: Colors.grey, offset: Offset(1,2), blurRadius: 5)],),
