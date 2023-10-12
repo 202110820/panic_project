@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:main/screens/main_screen.dart';
+{import 'package:main/screens/main_screen.dart';} // 메인 홈
  
-// 공황장애 의심 O
+// 공황장애 의심 O 결과 페이지
 class YesScreen extends StatelessWidget {
   const YesScreen ({ Key? key}) : super(key: key);
 
@@ -18,7 +18,7 @@ class YesScreen extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => IntroScreen(), // 홈 화면으로
+                builder: (context) => {IntroScreen()}, // 홈 화면으로
               ),
             );
           }),
@@ -55,7 +55,7 @@ class YesScreen extends StatelessWidget {
                   Container(
                     height: (MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top) * 0.10,
                     width: (MediaQuery.of(context).size.width - MediaQuery.of(context).padding.left) * 0.20,
-                    child: Image.asset('assets/Exclamation_Triangel.png'),
+                    child: Image.asset({'assets/Exclamation_Triangel.png'}), // 경고 png
                   ),
                   SizedBox(height: (MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top) * 0.05,),
                   Container(
@@ -85,7 +85,7 @@ class YesScreen extends StatelessWidget {
   }
 }
 
-// 공황장애 의심 X
+// 공황장애 의심 X 결과 페이지
 class NoScreen extends StatelessWidget {
   const NoScreen ({ Key? key}) : super(key: key);
 
@@ -102,7 +102,7 @@ class NoScreen extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => IntroScreen(), // 홈 화면으로 이동
+                builder: (context) => {IntroScreen()}, // 홈 화면으로 이동
               ),
             );
           }),
@@ -139,7 +139,7 @@ class NoScreen extends StatelessWidget {
                   Container(
                     height: (MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top) * 0.10,
                     width: (MediaQuery.of(context).size.width - MediaQuery.of(context).padding.left) * 0.20,
-                    child: Image.asset('assets/Happy_and_Smile.png'),
+                    child: Image.asset({'assets/Happy_and_Smile.png'}), // 스마일 png 
                   ),
                   SizedBox(height: (MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top) * 0.05,),
                   Container(
