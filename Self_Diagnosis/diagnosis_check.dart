@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:main/screens/main_screen.dart';
-import 'package:main/screens/check_result_screen.dart' as result;
+{import 'package:main/screens/main_screen.dart';} // 메인 홈 
+import 'package:main/screens/check_result_screen.dart' as result; // 자가진단 결과 페이지
 
 enum Answer { yes, no }
 
-// 상태에 따른 UI 변화 - StatefulWidget
 class PageDiagnosis extends StatefulWidget{ 
   const PageDiagnosis({Key? key}) : super(key: key);
 
@@ -23,7 +22,8 @@ class _PageDiagnosisState extends State<PageDiagnosis> {
 
   bool isYesPressed = false; // Yes 버튼 상태
   bool isNoPressed = false;  // No 버튼 상태
-  IconData Yescheckbox = Icons.circle_outlined; // 체크박스 초기화
+  // 체크박스 초기화
+  IconData Yescheckbox = Icons.circle_outlined;
   IconData Nocheckbox = Icons.circle_outlined;
   Color YescheckColor = Colors.grey;
   Color NocheckColor = Colors.grey;
@@ -61,7 +61,7 @@ class _PageDiagnosisState extends State<PageDiagnosis> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => IntroScreen(), // 결과 페이지로 이동
+              builder: (context) => {IntroScreen()}, // 메인 홈으로 이동 
             ),
           );
         }),
@@ -76,7 +76,7 @@ class _PageDiagnosisState extends State<PageDiagnosis> {
                 Container(
                   height: (MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top) * 0.15,
                   width: (MediaQuery.of(context).size.width -  MediaQuery.of(context).padding.left) * 0.35,
-                  child: Image.asset("assets/icon_Exam_Multiple_Choice.png"),
+                  child: Image.asset({"assets/icon_Exam_Multiple_Choice.png"}), // 사진 첨부(노트 사진?)
                 ),
               ],)),
               SizedBox(height: (MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top) * 0.01,), 
@@ -87,9 +87,8 @@ class _PageDiagnosisState extends State<PageDiagnosis> {
                 width: (MediaQuery.of(context).size.width -  MediaQuery.of(context).padding.left) * 0.90,
                 child: Text(Queset[currentPage-1], style: TextStyle(fontSize: 27, color: Colors.black, fontWeight: FontWeight.bold),)
               ),
-              //SizedBox(height: (MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top) * 0.01,), 
 
-
+              // 선택 부분
               Expanded(
                 child: Container(
                   width: double.infinity,
@@ -184,7 +183,7 @@ class _PageDiagnosisState extends State<PageDiagnosis> {
                                   currentPage--;
                                   isYesPressed = false;
                                   isNoPressed = false;
-                                  Yescheckbox = Icons.circle_outlined; // 체크박스 초기화
+                                  Yescheckbox = Icons.circle_outlined;
                                   Nocheckbox = Icons.circle_outlined;
                                   YescheckColor = Colors.grey;
                                   NocheckColor = Colors.grey;
@@ -194,7 +193,7 @@ class _PageDiagnosisState extends State<PageDiagnosis> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Image.asset("assets/icon_chevron_circle_left.png"),
+                                Image.asset({"assets/icon_chevron_circle_left.png"}), // 왼쪽 화살표 png
                                 SizedBox(width: (MediaQuery.of(context).size.width - MediaQuery.of(context).padding.left) * 0.02,),  
                                 Text(
                                   "Back",
@@ -227,7 +226,7 @@ class _PageDiagnosisState extends State<PageDiagnosis> {
                                     currentPage++;
                                     isYesPressed = false;
                                     isNoPressed = false;
-                                    Yescheckbox = Icons.circle_outlined; // 체크박스 초기화
+                                    Yescheckbox = Icons.circle_outlined;
                                     Nocheckbox = Icons.circle_outlined;
                                     YescheckColor = Colors.grey;
                                     NocheckColor = Colors.grey;
@@ -235,7 +234,7 @@ class _PageDiagnosisState extends State<PageDiagnosis> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => CheckList(answerVals: answerVal, Quesets: Queset),
+                                        builder: (context) => CheckList(answerVals: answerVal, Quesets: Queset), // 전체 체크 리스트 확인 창으로 이동
                                       ),
                                     );
                                   }
@@ -253,7 +252,7 @@ class _PageDiagnosisState extends State<PageDiagnosis> {
                                   )
                                 ),
                                 SizedBox(width: (MediaQuery.of(context).size.width - MediaQuery.of(context).padding.left) * 0.02,),  
-                                Image.asset("assets/icon_chevron_circle_right.png"),
+                                Image.asset({"assets/icon_chevron_circle_right.png"}), // 오른쪽 화살표 png
                             ],)
                           ),
                         ), 
@@ -274,7 +273,7 @@ class _PageDiagnosisState extends State<PageDiagnosis> {
     setState(() {
       isYesPressed = value;
       if(value == true){
-        Yescheckbox = Icons.check_circle; //, color: Color.fromRGBO(98, 183, 183, 1)
+        Yescheckbox = Icons.check_circle;
         YescheckColor = Color.fromRGBO(98, 183, 183, 1);
         Nocheckbox = Icons.circle_outlined;
         NocheckColor = Colors.grey;
@@ -287,7 +286,7 @@ class _PageDiagnosisState extends State<PageDiagnosis> {
     setState(() {
       isNoPressed = value;
       if(value == true){
-        Nocheckbox = Icons.check_circle; //, color: Color.fromRGBO(98, 183, 183, 1)
+        Nocheckbox = Icons.check_circle;
         NocheckColor = Color.fromRGBO(98, 183, 183, 1);
         Yescheckbox = Icons.circle_outlined;
         YescheckColor = Colors.grey;
@@ -300,7 +299,7 @@ class _PageDiagnosisState extends State<PageDiagnosis> {
 //##################################################################################################################################
 
 
-// 체크 리스트 위젯
+// 전체 체크 리스트 페이지
 class CheckList extends StatefulWidget {
   final Map<int, Answer?> answerVals; 
   final List<String> Quesets;
@@ -327,7 +326,7 @@ class _CheckListState extends State<CheckList>{
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => IntroScreen(), // 홈 화면으로 이동?
+                builder: (context) => IntroScreen(), // 홈 화면으로 이동
               ),
             );
           }),
@@ -342,7 +341,7 @@ class _CheckListState extends State<CheckList>{
               style: TextStyle(fontSize: 25, color: Colors.black, fontWeight: FontWeight.bold,),)
             ),
             SizedBox(height: (MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top) * 0.09,),
-            // 체크 리스트
+            // 체크 리스트 
             Container(
               height: (MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top) * 0.65,
               width: double.infinity,
@@ -374,9 +373,9 @@ class _CheckListState extends State<CheckList>{
                 ),
                 onPressed: () {
                   if(resultCount(widget.answerVals) >= 4){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => result.YesScreen()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => result.YesScreen())); // 결과 페이지로 이동 
                   } else{
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => result.NoScreen()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => result.NoScreen())); // 결과 페이지로 이동
                   }
                   
                 },
