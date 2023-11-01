@@ -1,4 +1,4 @@
-information Tap
+Information Tap
 - what is panic disorder?
 - Cause
 - Symtom
