@@ -2,6 +2,7 @@
 CBT
 
 /Cognitive_restructuring 
+
 // 과대평가 (overrated)
 - What_is_overrated (over_1, over_2, over_3, over_4)
 - Overrated_tip (over_tip_1, over_tip_2, over_tip_3 ...)
@@ -12,6 +13,7 @@ CBT
   
 // 역기능적
 1 ..
+
 
 /Breating_Exercises
 - Breating_main
