@@ -1,4 +1,4 @@
-# Cognitive_restructuring
+## Cognitive_restructuring
 
 ### 과대평가 (overrated)
 - over_1, over_2, over_3, over_4 (과대평가 설명)
