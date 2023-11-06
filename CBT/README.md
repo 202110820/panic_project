@@ -1,7 +1,7 @@
 
 CBT
 
-/Cognitive_restructuring 
+</h1>Cognitive_restructuring</h1>
 
 // 과대평가 (overrated)
 - What_is_overrated (over_1, over_2, over_3, over_4)
