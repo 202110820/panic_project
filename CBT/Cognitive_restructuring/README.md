@@ -1,1 +1,2 @@
-
+- Overrated (과대화)
+- Catastophizing (재앙화)
