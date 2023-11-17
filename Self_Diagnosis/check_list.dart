@@ -74,32 +74,6 @@ class _CheckListState extends State<CheckList>{
                 );
               },
             ),
-            // Container(
-            //   height: (MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top) * 0.65,
-            //   width: double.infinity,
-            //   child: ListView.builder(
-            //     padding: EdgeInsets.zero,
-            //     itemCount: widget.answerVals.length,
-            //     itemBuilder: (context, index){
-            //       print(widget.Quesets[0]);
-            //       final answer = widget.answerVals[index];
-            //       final isYes = (answer == Answer.yes);
-            //       return ListTile(
-            //         leading: isYes ? Icon(Icons.circle, color: Color.fromRGBO(98, 183, 183, 1), size: 30,) : Icon(Icons.circle_outlined, color: Colors.grey, size: 30,),
-            //         title: Text("나는 " + removeNewlines(widget.Quesets[index]),
-            //         style: TextStyle(
-            //             fontSize: 11,
-            //             fontFamily: 'Inter',
-            //             fontWeight: FontWeight.w600,
-            //             color: Colors.black,
-            //         )),
-            //       );
-            //     },
-            //   ),
-            // ),
-            
-
-            //SizedBox(height: (MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top) * 0.04,),
 
             // 결과 확인 버튼
             Expanded(
