@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:main/screens/main_screen.dart';
+import 'package:main/screens/main_screen.dart'; //main.dart
 import 'package:main/screens/SelfDiagnosis/check_result_screen.dart' as result; //자가진단 결과 페이지 
 
 enum Answer { yes, no }
@@ -114,9 +114,9 @@ class _CheckListState extends State<CheckList>{
                   ),
                   onPressed: () {
                     if(resultCount(widget.answerVals) >= 4){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => result.YesScreen()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => result.YesScreen())); //공황장애 의심 페이지로 이동
                     } else{
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => result.NoScreen()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => result.NoScreen())); //공황장애 미의심 페이지로 이동
                     }
                     
                   },
