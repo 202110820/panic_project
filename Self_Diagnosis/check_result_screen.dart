@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../main.dart';
+import 'package:main/screens/main_screen.dart'; //메인 페이지
 
 // 공황장애 의심 O 결과 페이지
 class YesScreen extends StatelessWidget {
@@ -15,26 +15,31 @@ class YesScreen extends StatelessWidget {
           elevation: 0,
           centerTitle: true,
           leading: IconButton(icon: Icon(Icons.arrow_back_ios, size: 30, color: Color.fromRGBO(151, 151, 151, 1)), onPressed:() {
-                Navigator.of(context).popUntil((route) => route.isFirst);
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => IntroScreen(), // 메인 화면으로 이동
+                  ),
+                );
               }),
         ),
         extendBodyBehindAppBar: true,
         body: Center(
           child: Column(
             children: [
-              SizedBox(height: (MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top) * 0.20,),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.20,),
 
               // 주의 사진
               Container(
-                height: (MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top) * 0.30,
-                width: (MediaQuery.of(context).size.width - MediaQuery.of(context).padding.left) * 0.45,
+                height: MediaQuery.of(context).size.height * 0.20,
+                width: MediaQuery.of(context).size.width * 0.45,
                 child: Image.asset('assets/SelfDiagnosis/Exclamation_Triangle.png'),
               ),
 
-              //결과 칸
+              //결과 문구
               Container(
-                height: (MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top) * 0.37,
-                width: (MediaQuery.of(context).size.width - MediaQuery.of(context).padding.left) * 0.70,
+                height: MediaQuery.of(context).size.height * 0.35,
+                width: MediaQuery.of(context).size.width * 0.70,
                 child: Text.rich(
                   TextSpan(children: [
                     TextSpan(text: "공황장애가\n", style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w400, fontFamily: 'Inter'),),
@@ -45,7 +50,8 @@ class YesScreen extends StatelessWidget {
                 ), 
               ),
 
-              SizedBox(height: (MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top) * 0.05,),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.05,),
+              
               //Next 버튼
               Expanded(
                 child: Column(children: [
@@ -60,7 +66,7 @@ class YesScreen extends StatelessWidget {
                         textDirection: TextDirection.rtl,
                         child: ElevatedButton.icon(
                           onPressed: (){
-                            Navigator.push(
+                            Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => IntroScreen(), // Pd_1() 공황장애 설명 페이지로 이동
@@ -113,28 +119,33 @@ class NoScreen extends StatelessWidget {
           elevation: 0,
           centerTitle: true,
           leading: IconButton(icon: Icon(Icons.arrow_back_ios, size: 30, color: Color.fromRGBO(151, 151, 151, 1)), onPressed:() {
-                Navigator.of(context).popUntil((route) => route.isFirst);
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => IntroScreen(), // 메인 화면으로 이동
+                  ),
+                );
               }),
         ),
 
         body: Center(
           child: Column(
             children: [
-              SizedBox(height: (MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top) * 0.10,),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.10,),
 
               // 스마일 사진
               Container(
-                height: (MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top) * 0.25,
-                width: (MediaQuery.of(context).size.width - MediaQuery.of(context).padding.left) * 0.45,
+                height: MediaQuery.of(context).size.height * 0.20,
+                width: MediaQuery.of(context).size.width * 0.45,
                 child: Image.asset('assets/SelfDiagnosis/Happy_and_Smile.png'),
               ),
 
-              SizedBox(height: (MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top) * 0.05,),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.05,),
 
-              //결과 칸
+              //결과 문구
               Container(
-                height: (MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top) * 0.35,
-                width: (MediaQuery.of(context).size.width - MediaQuery.of(context).padding.left) * 0.70,
+                height: MediaQuery.of(context).size.height * 0.30,
+                width: MediaQuery.of(context).size.width * 0.80,
                 child: Text.rich(
                   TextSpan(children: [
                     TextSpan(text: "정상수치", style: TextStyle(color: Color(0xFF1463FC), fontSize: 16, fontWeight: FontWeight.w600, fontFamily: 'Inter'),),
@@ -144,7 +155,7 @@ class NoScreen extends StatelessWidget {
                 ), 
               ),
 
-              SizedBox(height: (MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top) * 0.05,),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.05,),
               //Next 버튼
               Expanded(
                 child: Column(children: [
@@ -159,7 +170,7 @@ class NoScreen extends StatelessWidget {
                         textDirection: TextDirection.rtl,
                         child: ElevatedButton.icon(
                           onPressed: (){
-                            Navigator.push(
+                            Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => IntroScreen(), // Pd_1() 공황장애 설명 페이지로 이동
