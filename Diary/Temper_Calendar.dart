@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:main/screens/main_screen.dart';
-import 'package:main/screens/Diary/heart_temperature.dart';
-import 'package:main/screens/Diary/detail_calendar_screen.dart';
-import 'package:table_calendar/table_calendar.dart';
-import 'package:intl/intl.dart'; 
+import 'package:main/screens/main_screen.dart'; //메인 페이지
+import 'package:main/screens/Diary/heart_temperature.dart'; // 온도 및 일기 작성 페이지 
+import 'package:main/screens/Diary/detail_calendar_screen.dart'; // 기록 날짜에 대한 수정 페이지
+import 'package:table_calendar/table_calendar.dart'; // calendar 패키지
+import 'package:intl/intl.dart'; // DateFormat을 위한 패키지 
+
+// firebase 연동 패키지
 import 'package:main/database_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+// 캘린더 메인 화면
 class TemperCalendar extends StatefulWidget{ 
   final String email;
 
@@ -48,7 +51,7 @@ class _TemperCalendarState extends State<TemperCalendar> {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => IntroScreen(), //홈 화면으로 이동
+                builder: (context) => IntroScreen(), //메인 화면으로 이동
               ),
             );
           }),
@@ -141,13 +144,16 @@ class _TemperCalendarState extends State<TemperCalendar> {
               _focusedDay = focusedDay;
             },
             */
+		  
+	    // 온도에 따른 하트 이미지
             calendarBuilders: CalendarBuilders(
               markerBuilder: (context, date, events) {
+		// firebase
                 return StreamBuilder <QuerySnapshot>(
                   stream: getCalendar(date, widget.email), 
                   builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
-                    //snapshot.data!.docs.map((DocumentSnapshot document){
-                      if (!snapshot.hasData || snapshot.data!.docs.isEmpty){ // 기록된 날짜가 없으면 
+		      // 기록된 날짜가 없으면 - 빈 하트
+                      if (!snapshot.hasData || snapshot.data!.docs.isEmpty){
                         return Column(
                           children: [
                             const SizedBox(height: 20.0),
@@ -161,7 +167,7 @@ class _TemperCalendarState extends State<TemperCalendar> {
                       // 기록된 날짜 있으면
                       else {
                         final documents = snapshot.data!.docs;
-                        final widgets = documents.map((DocumentSnapshot document){ //snapshot.data!.docs.map((DocumentSnapshot document){
+                        final widgets = documents.map((DocumentSnapshot document){
                           return InkWell(
                             child: Column(
                               children: [
@@ -180,7 +186,6 @@ class _TemperCalendarState extends State<TemperCalendar> {
                                   if('assets/Calendar/HeartPercentage/heart${document['temperature']}.png' != 'assets/Calendar/HeartPercentage/empty_heart.png'){
                                     // 이벤트를 클릭할 때 세부 정보 팝업 열기
                                     _showDetailsPopup(context, date);
-                                    print('oKay');
                                   }
                                 }
                                 
@@ -215,7 +220,7 @@ class _TemperCalendarState extends State<TemperCalendar> {
                   await Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => DiaryExample(selectedDay: _selectedDay, email: widget.email), //온도 및 일기 추가 페이지로 이동
+                      builder: (context) => DiaryExample(selectedDay: _selectedDay, email: widget.email), //온도 및 일기 작성 페이지로 이동
                     ),
                   );
                 }
@@ -255,7 +260,7 @@ class _TemperCalendarState extends State<TemperCalendar> {
                       await Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => DetailDiary(selectedDay: document['date'], email: widget.email,), // 수정 페이지로 이동
+                          builder: (context) => DetailDiary(selectedDay: document['date'], email: widget.email,), // 기록 날짜에 대한 수정 페이지로 이동
                         )
                       );
                     },
@@ -263,6 +268,7 @@ class _TemperCalendarState extends State<TemperCalendar> {
                       children: <Widget> [
                         Row(children: [
                           SizedBox(width: MediaQuery.of(context).size.width * 0.85,),
+			  //휴지통
                           IconButton(
                             onPressed: (){
                               document.reference.delete(); //데이터 삭제
