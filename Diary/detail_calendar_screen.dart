@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+
+//firebase 연동 패키지 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:main/database_service.dart';
-import 'package:intl/intl.dart';
+
+import 'package:intl/intl.dart'; //DateFormat 위한 패키지
 
 class DetailDiary extends StatefulWidget {
   final Timestamp selectedDay;
@@ -21,14 +24,13 @@ class _DetailDiaryState extends State<DetailDiary> {
     'assets/Calendar/Emoji/emoji_boring.png', 'assets/Calendar/Emoji/emoji_sad.png', 'assets/Calendar/Emoji/emoji_angry.png',
   ];
 
+  // timestamp -> DateTime으로 변환하기 위한 함수
   String formatSelectedDay(Timestamp selectedDay) {
     Timestamp timestamp = selectedDay; // Firestore에서 Timestamp 필드 가져오기
     DateTime dateTime = timestamp.toDate(); // Timestamp를 DateTime으로 변환
 
     return DateFormat('MM/dd').format(dateTime);
   }
-
-  bool isSelectedEmoji = false;
   
   Widget build(BuildContext context) {
     //final login = Provider.of<LoginModel>(context, listen: false);
@@ -44,6 +46,8 @@ class _DetailDiaryState extends State<DetailDiary> {
               context // 캘린더 화면으로 이동 (이전 화면)
             );
           }),
+
+          //Save 버튼
           actions: [
             Container(
               height: MediaQuery.of(context).size.height * 0.06,
@@ -59,7 +63,7 @@ class _DetailDiaryState extends State<DetailDiary> {
                 child: Text("Save", style: TextStyle(fontSize: 15.28, color: Color.fromRGBO(154, 154, 154, 1), fontFamily: 'Poppins', fontWeight: FontWeight.w700),
                 textAlign: TextAlign.center,),
                 onPressed: () {
-                  Navigator.pop( //이전 화면(캘린더 화면)으로 이동
+                  Navigator.pop( // 캘린더 화면으로 이동 (이전 화면)
                     context,
                   );
                 },
@@ -76,12 +80,16 @@ class _DetailDiaryState extends State<DetailDiary> {
                 color: Colors.white,
                 height: MediaQuery.of(context).size.height * 0.95,
                 width: MediaQuery.of(context).size.width * 0.85,
+
+                //firebase
                 child: StreamBuilder<QuerySnapshot>(
                   stream: getCalendar(widget.selectedDay.toDate(), widget.email),
                   builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
+                    // 데이터 없으면 로딩 표시
                     if (!snapshot.hasData || snapshot.data!.docs.isEmpty){
                       return CircularProgressIndicator(backgroundColor: Colors.white, color: Colors.white); 
                     }
+                    // 데이터 있으면 화면에 표시
                     else{
                       final documents = snapshot.data!.docs;
                       final widgets = documents.map((DocumentSnapshot document){
@@ -95,9 +103,9 @@ class _DetailDiaryState extends State<DetailDiary> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                Text(formatSelectedDay(document['date']), style: TextStyle(fontSize: 16)),
+                                Text(formatSelectedDay(document['date']), style: TextStyle(fontSize: 16)), // 날짜
                                 SizedBox(width: MediaQuery.of(context).size.width * 0.60,),
-                                Text('${document['temperature']}°C', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+                                Text('${document['temperature']}°C', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),), // 온도
                               ],)
                             ],)
                           ),
@@ -133,14 +141,13 @@ class _DetailDiaryState extends State<DetailDiary> {
                                               return InkWell(
                                                 child: Container(
                                                   margin: EdgeInsets.all(5), // icon 사이 간격
-                                                  //color: Colors.white,
                                                   child: Image.asset(emojiList[index]),
                                                 ),
 
                                                 // emotion 수정
                                                 onTap: () {
                                                   setState(() {
-                                                    document.reference.set({'emotion': emojiList[index],}, SetOptions(merge: true)); // 바뀐 감정 데이터 저장
+                                                    document.reference.set({'emotion': emojiList[index],}, SetOptions(merge: true)); // 바뀐 감정 데이터 firebase에 저장
                                                   });
                                                 },
                                               );
@@ -163,9 +170,6 @@ class _DetailDiaryState extends State<DetailDiary> {
                                                   ),
                                                   onPressed: () {
                                                     print("Now Emoji: ${document['emotion']}");
-                                                    setState(() {
-                                                      //isSelectedEmoji = true;
-                                                    });
                                                     Navigator.pop(context, document['emotion']);
                                                   },
                                                   child: Text("OK", style: TextStyle(fontSize: 22, shadows:[
@@ -180,30 +184,28 @@ class _DetailDiaryState extends State<DetailDiary> {
                                     },
                                   );
                                 },
-                                icon: Image.asset(document['emotion']), iconSize: 100,
-                                //icon: (isSelectedEmoji == true) ? Image.asset(selectedEmoji) : Image.asset(basicEmoji), iconSize: 100,
+                                icon: Image.asset(document['emotion']), iconSize: 100, // 변경된 emotion으로 icon 설정
                               ),
                             ],)
                           ),
                           
                           SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
+
+                          // 다이어리 
                           Container(
-                            //color: Colors.blue,
                             height: MediaQuery.of(context).size.height * 0.25,
                             width: MediaQuery.of(context).size.width * 0.80,
                             child: Column(children: [
                               Row(children: [
                                 Container(
-                                  //color: Colors.yellow,
                                   child: Text('How was your day today?', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
                                 ),
-                              ],),
-                              
+                              ],), 
 
-                              //다이어리 작성
+                              // 일기 수정
                               Container(
                                 child: TextFormField(
-                                  initialValue: document['diary'],
+                                  initialValue: document['diary'], // 초기값
                                   minLines: 1,
                                   maxLines: null,
                                   maxLength: 200,
