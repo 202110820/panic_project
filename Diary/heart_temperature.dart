@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:main/database_service.dart';
-import 'package:sleek_circular_slider/sleek_circular_slider.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
-import 'package:intl/intl.dart';
+import 'package:main/database_service.dart'; //firebase 연동 패키지
+import 'package:sleek_circular_slider/sleek_circular_slider.dart'; //온도 설정 바 패키지 
+import 'package:sliding_up_panel/sliding_up_panel.dart'; //다이어리 sliding panel 패키지
+import 'package:intl/intl.dart'; //DateFormat을 위한 패키지
 
-
+//온도 설정 및 일기 작성 페이지
 class DiaryExample extends StatefulWidget {
   final DateTime selectedDay;
   final String email;
@@ -89,7 +89,7 @@ class _DiaryExampleState extends State<DiaryExample> {
     );
   }
 
-  // 살짝 보이는 Panel
+  // 온도 설정 창 아래에 살짝 보이는 Panel
   Widget _viewPanel(){
     return Container(
       child: Column(children: [
@@ -109,7 +109,7 @@ class _DiaryExampleState extends State<DiaryExample> {
     );
   }
 
-  //다이어리 Panel appbar
+  //다이어리 Panel의 appbar
   Widget _appBar() {
     return Container(
       child: Column(
@@ -138,7 +138,6 @@ class _DiaryExampleState extends State<DiaryExample> {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
-                    //shadowColor: Colors.grey,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
@@ -147,13 +146,12 @@ class _DiaryExampleState extends State<DiaryExample> {
                   textAlign: TextAlign.center,),
                   onPressed: () {
                     selectedHeartImage = heartImages[temperature.toInt()] ?? 'assets/Calendar/HeartPercentage/empty_heart.png';
-                    //String todayEmoji = selectedEmoji;
                     diaryText = _contentEditController.text; //일기 기록 내용
 
                     if (selectedHeartImage.isNotEmpty &&
                     selectedEmoji.isNotEmpty &&
                     diaryText.isNotEmpty){
-                      // 선택한 온도와 관련된 이미지를 첫 번째 화면으로 반환
+                      // 선택한 온도와 관련된 이미지를 이전 화면(캘린더 화면)으로 반환
                       print('Selected Heart Image: $selectedHeartImage');
                       print('Today Emoji is: $selectedEmoji');
 
@@ -204,11 +202,9 @@ class _DiaryExampleState extends State<DiaryExample> {
       _contentEditController.text = diaryText;
     }
 
-    return SingleChildScrollView(
+    return SingleChildScrollView( // 키보드 overflow 방지를 위해 ScrollView()로 묶음 
       controller: scrollController,
       child: Column(
-        //mainAxisAlignment: MainAxisAlignment.center,
-        //crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: MediaQuery.of(context).size.height * 0.10,),
           
@@ -219,9 +215,9 @@ class _DiaryExampleState extends State<DiaryExample> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                Text(formatSelectedDay(widget.selectedDay), style: TextStyle(fontSize: 16)),
+                Text(formatSelectedDay(widget.selectedDay), style: TextStyle(fontSize: 16)), // 날짜
                 SizedBox(width: MediaQuery.of(context).size.width * 0.60,),
-                Text('${temperature.toInt()}°C', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+                Text('${temperature.toInt()}°C', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),), // 온도
               ],)
             ],)
           ),
@@ -256,7 +252,6 @@ class _DiaryExampleState extends State<DiaryExample> {
                               return InkWell(
                                 child: Container(
                                   margin: EdgeInsets.all(5), // icon 사이 간격
-                                  //color: Colors.white,
                                   child: Image.asset(emojiList[index]),
                                 ),
                                 onTap: () {
@@ -308,6 +303,8 @@ class _DiaryExampleState extends State<DiaryExample> {
             ],)
           ),
           SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
+
+          // 다이어리
           Container(
             //color: Colors.blue,
             height: MediaQuery.of(context).size.height * 0.25,
@@ -315,12 +312,11 @@ class _DiaryExampleState extends State<DiaryExample> {
             child: Column(children: [
               Row(children: [
                 Container(
-                  //color: Colors.yellow,
                   child: Text('How was your day today?', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
                 ),
               ],),
 
-              //Write Diary
+              //일기 작성
               Container(
                 child: TextField(
                   controller: _contentEditController,
@@ -357,6 +353,7 @@ class _DiaryExampleState extends State<DiaryExample> {
               context // 캘린더 화면으로 이동 (이전 화면)
             );
           }),
+          // 가이드 버튼
           actions: [
             IconButton(icon: Image.asset('assets/question_mark_circled.png',), iconSize: 40, onPressed:(){
               showDialog(
@@ -400,6 +397,8 @@ class _DiaryExampleState extends State<DiaryExample> {
           child: Column(
             children: [
               SizedBox(height: MediaQuery.of(context).size.height * 0.20,),
+              
+              //문구
               Container(
                 child: Text("What's the temperature\nof your mind today?", textAlign: TextAlign.center, 
                 style: TextStyle(fontSize: 20, color: Color.fromRGBO(60, 60, 60, 1), fontWeight: FontWeight.w700, fontFamily: 'Inter'))
@@ -407,14 +406,15 @@ class _DiaryExampleState extends State<DiaryExample> {
               SizedBox(height: MediaQuery.of(context).size.height * 0.03,),
               Container(
                 child: Column(children: <Widget>[   
-                  // 마음  
+                  
+                  // 하트 이미지
                   Container(
                     child: Image.asset('assets/Calendar/HeartPercentage/heart${temperature.round()}.png'),
-                    //color: Colors.black,
                     height: MediaQuery.of(context).size.height * 0.08,
                     width: MediaQuery.of(context).size.width * 0.15,
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+                  
                   // 마음 온도계
                   Container(
                     child: SleekCircularSlider(
@@ -437,6 +437,7 @@ class _DiaryExampleState extends State<DiaryExample> {
                           gradientEndAngle: 180.0,
                         )
                       ),
+                      // 온도계 안에 숫자 위젯
                       innerWidget: (double value) {
                         return Center(
                           child: Text.rich(
