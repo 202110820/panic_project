@@ -234,7 +234,7 @@ class _PageDiagnosisState extends State<PageDiagnosis> {
                                     Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => CheckList(answerVals: answerVal, Quesets: Queset), //체크 리스트 현황 확인 페이지로 이동
+                                        builder: (context) => CheckList(answerVals: answerVal, Quesets: Queset), //자가진단 체크 현황 페이지로 이동
                                       ),
                                     );
                                   }
