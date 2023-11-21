@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
 
-import 'package:main/screens/Mypage/login_test.dart';
+import 'package:main/screens/Mypage/login_screen.dart';
 import 'package:main/screens/Diary/Temper_Calendar.dart';
 
 //로그인 여부 체크 화면
@@ -43,7 +43,7 @@ class _LoginCalendarScreenState extends State<LoginCalendarScreen>{
   @override
   void initState(){
     super.initState();
-    Timer(Duration(milliseconds: 2000), (){
+    Timer(Duration(milliseconds: 1000), (){
       moveScreen();
     });
   }
