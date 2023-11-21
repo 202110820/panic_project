@@ -12,11 +12,13 @@ void showSnackBar(BuildContext context, String text) {
 
 final FirebaseFirestore firestore = FirebaseFirestore.instance; // DB 인스턴스
 
+// !!!!!컬렉션 이름 바꾸기
 CollectionReference MindCalendarCollection = firestore.collection('MindCalendar'); // MindCalendar 컬렉션
 CollectionReference MyPageCollection = firestore.collection('MyPage'); // MyPage 컬렉션
 CollectionReference MyMapCollection = firestore.collection('MyMap'); // MyMap 컬렉션
 
 // 캘린더 데이터 저장 메소드
+// '' 따옴표 안에 있는 단어 필드 이름에 맞춰서 바꾸기!!!!!
 void addCalendar(DateTime recordDate, String diary, String emotion, String temperature, String email){
   MindCalendarCollection.add({
     'date': recordDate, //기록 날짜 저장
