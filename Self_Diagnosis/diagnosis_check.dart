@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:main/screens/main_screen.dart'; //main.dart
+import 'package:main/screens/main_screen.dart'; //메인화면
 import 'package:main/screens/SelfDiagnosis/check_list.dart'; //자가진단 체크 현황 리스트 페이지
 
+// 상태에 따른 UI 변화 - StatefulWidget
 class PageDiagnosis extends StatefulWidget{ 
   const PageDiagnosis({Key? key}) : super(key: key);
 
@@ -20,7 +21,9 @@ class _PageDiagnosisState extends State<PageDiagnosis> {
 
   bool isYesPressed = false; // Yes 버튼 상태
   bool isNoPressed = false;  // No 버튼 상태
-  IconData Yescheckbox = Icons.circle_outlined; // 체크박스 초기화
+
+  // 체크박스 초기화
+  IconData Yescheckbox = Icons.circle_outlined;
   IconData Nocheckbox = Icons.circle_outlined;
   Color YescheckColor = Colors.grey;
   Color NocheckColor = Colors.grey;
@@ -56,10 +59,10 @@ class _PageDiagnosisState extends State<PageDiagnosis> {
         centerTitle: true,
         leading: IconButton(icon: Icon(Icons.arrow_back_ios, size: 30, color: Color.fromRGBO(151, 151, 151, 1)), 
         onPressed:() {
-          Navigator.pop(
+          Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => IntroScreen(), // 홈 페이지로 이동
+              builder: (context) => IntroScreen(), // 메인 페이지로 이동
             ),
           );
         }),
@@ -68,13 +71,13 @@ class _PageDiagnosisState extends State<PageDiagnosis> {
         body: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: (MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top) * 0.25,), 
+              SizedBox(height: MediaQuery.of(context).size.height * 0.25,), 
 
               // 질문 컨테이너
               Container(
                 //color: Colors.grey,
-                height: (MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top) * 0.20,
-                width: (MediaQuery.of(context).size.width -  MediaQuery.of(context).padding.left) * 0.90,
+                height: MediaQuery.of(context).size.height * 0.15,
+                width: MediaQuery.of(context).size.width * 0.90,
                 child: Text('나는 ${Queset[currentPage-1]}', 
                 style: TextStyle(
                     fontSize: 25,
@@ -84,10 +87,12 @@ class _PageDiagnosisState extends State<PageDiagnosis> {
                 ),textAlign: TextAlign.center)
               ),
 
+              SizedBox(height: MediaQuery.of(context).size.height * 0.03,), 
+
               // Yes 버튼
               Container(
-                height: (MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top) * 0.12,
-                width: (MediaQuery.of(context).size.width -  MediaQuery.of(context).padding.left) * 0.90,
+                height: MediaQuery.of(context).size.height * 0.12,
+                width: MediaQuery.of(context).size.width * 0.90,
                 child: ElevatedButton(
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.white),
@@ -115,19 +120,19 @@ class _PageDiagnosisState extends State<PageDiagnosis> {
                         fontWeight: FontWeight.w700,
                         color: Colors.black
                     ),), 
-                    SizedBox(width: (MediaQuery.of(context).size.width -  MediaQuery.of(context).padding.left) * 0.40),
+                    SizedBox(width: MediaQuery.of(context).size.width * 0.40,),
                     Icon(Yescheckbox, color: YescheckColor, size: 50),
                   ],)
                   
                 )
               ),
 
-              SizedBox(height: (MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top) * 0.06,), 
+              SizedBox(height: MediaQuery.of(context).size.height * 0.06,),
 
               // No 버튼
               Container(
-                height: (MediaQuery.of(context).size.height - AppBar().preferredSize.height - MediaQuery.of(context).padding.top) * 0.12,
-                width: (MediaQuery.of(context).size.width -  MediaQuery.of(context).padding.left) * 0.90,
+                height: MediaQuery.of(context).size.height * 0.12,
+                width: MediaQuery.of(context).size.width * 0.90,
                 child: ElevatedButton(
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.white),
@@ -154,7 +159,7 @@ class _PageDiagnosisState extends State<PageDiagnosis> {
                         fontWeight: FontWeight.w700,
                         color: Colors.black
                     ),),
-                    SizedBox(width: (MediaQuery.of(context).size.width -  MediaQuery.of(context).padding.left) * 0.42),
+                    SizedBox(width: MediaQuery.of(context).size.width * 0.44),
                     Icon(Nocheckbox, color: NocheckColor, size: 50),
                   ],)
                 )
@@ -166,7 +171,7 @@ class _PageDiagnosisState extends State<PageDiagnosis> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
 
-                    //back
+                    //Back 버튼
                     Container(
                       margin: EdgeInsets.only(left:15, bottom: 40),
                       alignment: Alignment.bottomLeft,
@@ -223,11 +228,13 @@ class _PageDiagnosisState extends State<PageDiagnosis> {
                                     Nocheckbox = Icons.circle_outlined;
                                     YescheckColor = Colors.grey;
                                     NocheckColor = Colors.grey;
-                                  } else{ // 마지막 페이지인 경우
-                                    Navigator.push(
+                                  } 
+                                  // 마지막 페이지인 경우
+                                  else{
+                                    Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => CheckList(answerVals: answerVal, Quesets: Queset), // 전체 체크 항목 확인 페이지로 이동
+                                        builder: (context) => CheckList(answerVals: answerVal, Quesets: Queset), //체크 리스트 현황 확인 페이지로 이동
                                       ),
                                     );
                                   }
@@ -269,7 +276,7 @@ class _PageDiagnosisState extends State<PageDiagnosis> {
     setState(() {
       isYesPressed = value;
       if(value == true){
-        Yescheckbox = Icons.check_circle; //, color: Color.fromRGBO(98, 183, 183, 1)
+        Yescheckbox = Icons.check_circle;
         YescheckColor = Color.fromRGBO(98, 183, 183, 1);
         Nocheckbox = Icons.circle_outlined;
         NocheckColor = Colors.grey;
@@ -282,7 +289,7 @@ class _PageDiagnosisState extends State<PageDiagnosis> {
     setState(() {
       isNoPressed = value;
       if(value == true){
-        Nocheckbox = Icons.check_circle; //, color: Color.fromRGBO(98, 183, 183, 1)
+        Nocheckbox = Icons.check_circle;
         NocheckColor = Color.fromRGBO(98, 183, 183, 1);
         Yescheckbox = Icons.circle_outlined;
         YescheckColor = Colors.grey;
