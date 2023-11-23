@@ -17,6 +17,7 @@
 - Breating_main
 - b_step_1, b_step_2, b_step_3, b_step_4
 - b_heart
+- Breathe (실제 호흡 훈련 화면)
 
 ---
 
