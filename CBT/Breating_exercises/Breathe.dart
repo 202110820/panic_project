@@ -11,8 +11,6 @@ class Breathe extends StatefulWidget {
 
 class _BreatheState extends State<Breathe> with TickerProviderStateMixin{ //TickerProvider는 애니메이션에 사용되는 Ticker를 생성할 수 있는 메서드인 vsync를 제공하는 인터페이스
   late FlutterGifController controller1;
-  Stopwatch stopwatch = Stopwatch()..start();
-  //late AssetImage image;
 
   @override
   void initState(){
@@ -24,7 +22,6 @@ class _BreatheState extends State<Breathe> with TickerProviderStateMixin{ //Tick
         max:500,
         period: const Duration(seconds: 19),
       );
-      print('Elapsed time: ${stopwatch.elapsed.inMilliseconds}');
       super.initState();
     });
   }
