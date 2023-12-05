@@ -17,6 +17,10 @@ import 'CBT/cbt_menu.dart';
 import 'CBT/Breating_exercises/be_main.dart';
 import 'CBT/Muscle_relaxation/mr_main.dart';
 
+//firebase 및 로그인 확인
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 void main() {
   runApp(Main_Split());
 }
@@ -36,6 +40,49 @@ class _Main_Split extends State<Main_Split> with TickerProviderStateMixin {
     animationDuration: const Duration(milliseconds: 200),
   );
 
+  String? userName; // 닉네임 저장할 변수
+
+  // 로그인 여부를 확인하고, 로그인된 사용자의 닉네임을 가져오는 함수
+  Future<void> checkLogin() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isLogin = prefs.getBool('isLogin') ?? false;
+
+    if(isLogin){
+      String? userEmail = prefs.getString('email'); // 'email' 키로 저장된 값을 불러옴
+      if (userEmail != null) {
+        final QuerySnapshot<Map<String, dynamic>> userQuery = await FirebaseFirestore.instance
+        .collection('Mypage')
+        .where("email", isEqualTo: userEmail)
+        .get();
+
+        // 쿼리 결과에서 문서 가져오기
+        final List<QueryDocumentSnapshot<Map<String, dynamic>>> documents = userQuery.docs;
+        if (documents.isNotEmpty) {
+          // 문서가 존재하면 첫 번째 문서의 참조를 얻기
+          final DocumentSnapshot<Map<String, dynamic>> userSnapshot = documents.first;
+          setState(() {
+            userName = userSnapshot['nickname']; 
+          });
+          print(userName);
+        } else {
+          print('No documents found for the given email.');
+        }
+      } else { null;
+        // 로그인이 되어 있지만 이메일 정보가 없는 경우의 처리
+        print('No documents found for the given email.');
+      }
+    }
+    else {
+      print('No documents found for the given email.');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    checkLogin(); // initState에서 checkLogin함수 호출
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -44,7 +91,7 @@ class _Main_Split extends State<Main_Split> with TickerProviderStateMixin {
         ),
         home: Scaffold(
           appBar: AppBar(
-              title: Text('  User Name', style: TextStyle(
+              title: Text('  ${userName ?? '이정휘'}', style: TextStyle(
                 color: Color(0xFF333333),
                 fontSize: 30,
                 fontFamily: 'Inter',
