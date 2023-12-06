@@ -103,7 +103,7 @@ class _DiaryExampleState extends State<DiaryExample> {
             children: [
               Text(formatSelectedDay(widget.selectedDay), style: TextStyle(fontSize: 16)),
               SizedBox(width: MediaQuery.of(context).size.width * 0.60,),
-              Text('${temperature.toInt()}°C', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
+              Text('${temperature.toInt()}°C', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),),
             ],)
         ],)
     );
@@ -168,7 +168,7 @@ class _DiaryExampleState extends State<DiaryExample> {
                             barrierDismissible: false,
                             builder:(BuildContext context){
                               return AlertDialog(
-                                content: Text("모든 항복을 채워주세요."),
+                                content: Text("모든 항목을 채워주세요."),
                                 actions: <Widget>[
                                   TextButton(
                                     child: Text("OK", style: TextStyle(color: Color.fromRGBO(162, 196, 201, 1),),),
@@ -237,8 +237,9 @@ class _DiaryExampleState extends State<DiaryExample> {
                         builder: (BuildContext context) {
                           return AlertDialog(
                             backgroundColor: Colors.white,
-                            title: Text("Record today's feelings.", textAlign: TextAlign.center),
+                            title: Text("Record today's feelings.", textAlign: TextAlign.center, style: TextStyle(fontFamily: 'Inter',fontSize: 20),),
                             content: Container(
+                              margin: EdgeInsets.only(top: 20),
                               height: MediaQuery.of(context).size.height * 0.40, // 그리드 높이 조정
                               width: MediaQuery.of(context).size.width * 0.40, // 그리드 너비 조정
                               child: GridView.builder(
@@ -269,7 +270,7 @@ class _DiaryExampleState extends State<DiaryExample> {
                                   mainAxisAlignment: MainAxisAlignment.center, // 가운데 정렬
                                   children: <Widget>[
                                     Container(
-                                      height: MediaQuery.of(context).size.height * 0.08,
+                                      height: MediaQuery.of(context).size.height * 0.075,
                                       width: MediaQuery.of(context).size.width * 0.30,
                                       child: ElevatedButton(
                                         style: ElevatedButton.styleFrom(
@@ -286,8 +287,7 @@ class _DiaryExampleState extends State<DiaryExample> {
                                           Navigator.pop(context, selectedEmoji);
                                           print("success ${selectedEmoji}, ${isSelectedEmoji}");
                                         },
-                                        child: Text("OK", style: TextStyle(fontSize: 22, shadows:[
-                                          Shadow(color: Colors.grey, offset: Offset(1,2), blurRadius: 5)],),
+                                        child: Text("OK", style: TextStyle(fontSize: 22,fontFamily: 'Inter',color: Colors.white, fontWeight: FontWeight.w500),
                                         ),
                                       ),
                                     )
@@ -355,7 +355,7 @@ class _DiaryExampleState extends State<DiaryExample> {
               }),
               // 가이드 버튼
               actions: [
-                IconButton(icon: Image.asset('assets/question_mark_circled.png',), iconSize: 40, onPressed:(){
+                IconButton(icon: Icon(Icons.question_mark, size: 30, color: Colors.grey), onPressed:(){
                   showDialog(
                       context: context,
                       barrierDismissible: true, //바깥영역 터치 시 닫을지 여부
@@ -369,11 +369,11 @@ class _DiaryExampleState extends State<DiaryExample> {
                                         children: <TextSpan>[
                                           TextSpan(
                                             text: "오늘의 하트를 채워주세요.\n",
-                                            style: TextStyle(color: Color.fromRGBO(153, 150, 150, 1), fontSize: 17, fontWeight: FontWeight.w700, fontFamily: 'Archivo'),
+                                            style: TextStyle(color: Color.fromRGBO(153, 150, 150, 1), fontSize: 17, fontWeight: FontWeight.w600, fontFamily: 'Archivo',),
                                           ),
                                           TextSpan(
                                             text: "-100°C부터 0°C까지 기분을 하트로 표현하세요.",
-                                            style: TextStyle(color: Color.fromRGBO(153, 150, 150, 1), fontSize: 13, fontWeight: FontWeight.w700, fontFamily: 'Archivo'),
+                                            style: TextStyle(color: Color.fromRGBO(153, 150, 150, 1), fontSize: 13, fontWeight: FontWeight.w600, fontFamily: 'Archivo'),
                                           ),
                                         ],
                                       ),
@@ -381,6 +381,7 @@ class _DiaryExampleState extends State<DiaryExample> {
                                 ),
                                 Container(
                                   child: Image.asset('assets/Calendar/TemperatureGuide.png'),
+
                                   height: MediaQuery.of(context).size.height * 0.60,
                                   width: MediaQuery.of(context).size.width * 0.50,
                                 ),
@@ -401,7 +402,7 @@ class _DiaryExampleState extends State<DiaryExample> {
                   //문구
                   Container(
                       child: Text("What's the temperature\nof your mind today?", textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 20, color: Color.fromRGBO(60, 60, 60, 1), fontWeight: FontWeight.w700, fontFamily: 'Inter'))
+                          style: TextStyle(fontSize: 22, color: Color.fromRGBO(60, 60, 60, 1), fontWeight: FontWeight.w700, fontFamily: 'Inter'))
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.03,),
                   Container(
@@ -428,7 +429,7 @@ class _DiaryExampleState extends State<DiaryExample> {
                                 customWidths: CustomSliderWidths(progressBarWidth: 15),
 
                                 customColors: CustomSliderColors(
-                                  progressBarColors: [Color.fromRGBO(255, 224, 230, 1), Color.fromRGBO(204, 22, 60, 1)],
+                                  progressBarColors: [Color.fromRGBO(204, 22, 60, 1), Color.fromRGBO(255, 224, 230, 1)],
                                   trackColor: Colors.grey,
                                   dotColor: Colors.grey,
 
