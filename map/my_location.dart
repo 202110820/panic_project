@@ -103,7 +103,7 @@ class _MyLocationState extends State<MyLocation> {
                               return document['address'].toString();
                             }).toList();
       
-                            print('리스트: ${myDateList}'); // 확인용
+                            print('리스트: ${locationList}'); // 확인용
       
                             return ListView.builder(
                               padding: EdgeInsets.zero,
@@ -140,7 +140,7 @@ class _MyLocationState extends State<MyLocation> {
                                         QuerySnapshot<Map<String, dynamic>> querySnapshot = await FirebaseFirestore.instance
                                             .collection('Mymap')
                                             .where('email', isEqualTo: widget.email)
-                                            .where('address', isEqualTo: myDateList[index])
+                                            .where('address', isEqualTo: locationList[index])
                                             .get();
       
                                         // 제거
@@ -154,7 +154,7 @@ class _MyLocationState extends State<MyLocation> {
                                           builder: (ctx) {
                                             return AlertDialog(
                                               title: const Text('Are you sure?'),
-                                              content: Text('delete ${myDateList[index]}'),
+                                              content: Text('delete ${locationList[index]}'),
                                               actions: <Widget>[
                                                 ElevatedButton(
                                                   onPressed: () {
