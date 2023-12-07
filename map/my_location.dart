@@ -28,6 +28,8 @@ Widget Div(){
   );
 }
 
+List<String> locationList  = []; // 저장한 장소 리스트 선언
+
 class _MyLocationState extends State<MyLocation> {
   PickResult? selectedPlace;
 
@@ -78,23 +80,105 @@ class _MyLocationState extends State<MyLocation> {
                         stream: getMyMap(widget.email),
                         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
                           if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                            return CircularProgressIndicator();
+                            // 저장된 장소가 하나도 없을 때
+                            return Container(
+                              alignment: Alignment.center,
+                              margin: EdgeInsets.only(bottom: 100),
+                              child: Text('나의 Location을 저장해주세요.',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: 'Inter',
+                                fontWeight: FontWeight.w400,
+                                color: Colors.black,
+                              ),
+                              )
+                            );
                           }
+                          //저장된 장소가 있을 때
                           else{
                             final documents = snapshot.data!.docs;
-                            final widgets = documents.map((DocumentSnapshot document){
-                              //print('------------');
-                              //print(documents);
-                              return SingleChildScrollView(
-                                  child: Column(children: [
-                                    SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
-                                    Text("${document['address']}", style: TextStyle(fontSize: 15),textAlign: TextAlign.center),
-                                    SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
-                                    Div(),
-                                  ],)
-                              );
+                            locationList.clear(); //리스트 초기화
+                            locationList = documents.map((DocumentSnapshot document){
+                              // 각 문서에서 address 필드를 가져와 리스트에 추가 
+                              return document['address'].toString();
                             }).toList();
-                            return Column(children: widgets,);
+      
+                            print('리스트: ${myDateList}'); // 확인용
+      
+                            return ListView.builder(
+                              padding: EdgeInsets.zero,
+                              itemCount: locationList.length,
+                              itemBuilder: (context, index){
+                                return Column(
+                                  children: [
+                                    Dismissible(
+                                      key: UniqueKey(), //Key(item[index]),
+                                      child: ListTile(
+                                        leading: Icon(Icons.circle, color: Color.fromRGBO(98, 183, 183, 1), size: 30,),
+                                        title: Text(
+                                          '${locationList[index]}',
+                                          style: TextStyle(
+                                            fontSize: 11,
+                                            fontFamily: 'Inter',
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                      ),
+                                      direction: DismissDirection.endToStart, // swipe 방향
+                                      background: Container(
+                                        color: Colors.red,
+                                        alignment: Alignment.centerRight,
+                                        child: const Icon(
+                                          Icons.delete,
+                                          size: 36,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      onDismissed: (direction) async{
+                                        // 해당 삭제할 문서 찾아서
+                                        QuerySnapshot<Map<String, dynamic>> querySnapshot = await FirebaseFirestore.instance
+                                            .collection('Mymap')
+                                            .where('email', isEqualTo: widget.email)
+                                            .where('address', isEqualTo: myDateList[index])
+                                            .get();
+      
+                                        // 제거
+                                        querySnapshot.docs.forEach((doc) async {
+                                          await doc.reference.delete();
+                                        });
+                                      },
+                                      confirmDismiss: (direction) {
+                                        return showDialog(
+                                          context: context,
+                                          builder: (ctx) {
+                                            return AlertDialog(
+                                              title: const Text('Are you sure?'),
+                                              content: Text('delete ${myDateList[index]}'),
+                                              actions: <Widget>[
+                                                ElevatedButton(
+                                                  onPressed: () {
+                                                    Navigator.of(ctx).pop(false);
+                                                  },
+                                                  child: const Text('CANCEL'),
+                                                ),
+                                                ElevatedButton(
+                                                  onPressed: () {
+                                                    Navigator.of(ctx).pop(true);
+                                                  },
+                                                  child: const Text('DELETE'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                      },
+                                    ),
+                                    Div(),
+                                  ],
+                                );
+                              },
+                            );
                           }
                         }
                     ),
