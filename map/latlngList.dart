@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:main/screens/main_screen.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-//import 'package:main/database_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Maptest extends StatefulWidget{
@@ -97,7 +96,6 @@ class _MaptestState extends State<Maptest> {
           child: Column(
             children: [
               SizedBox(height: MediaQuery.of(context).size.height * 0.13,),
-
               Container(
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height * 0.15,
@@ -109,6 +107,7 @@ class _MaptestState extends State<Maptest> {
                         color: Colors.black,
                       ),textAlign: TextAlign.center),
               ),
+              
               Container(
                 child: Text('${latlngList}'),
               ),
