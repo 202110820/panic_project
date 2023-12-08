@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Temper_Calendar.dart';
 
 //firebase 연동 패키지
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -86,9 +87,9 @@ class _DetailDiaryState extends State<DetailDiary> {
                                             Row(
                                               mainAxisAlignment: MainAxisAlignment.center,
                                               children: [
-                                                Text(formatSelectedDay(document['day']), style: TextStyle(fontSize: 16)), // 날짜
+                                                Text(formatSelectedDay(document['day']), style: TextStyle(fontWeight: FontWeight.w800, fontSize: 18),), // 날짜
                                                 SizedBox(width: MediaQuery.of(context).size.width * 0.60,),
-                                                Text('${document['temperature']}°C', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),), // 온도
+                                                Text('${document['temperature']}°C', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 18),), // 온도
                                               ],)
                                           ],)
                                       ),
@@ -233,9 +234,10 @@ class _DetailDiaryState extends State<DetailDiary> {
                                             if(changedDiary != ''){
                                               document.reference.set({'contents': changedDiary}, SetOptions(merge: true)); // 바뀐 일기 데이터 저장
                                             }
-                                            Navigator.pop( // 캘린더 화면으로 이동 (이전 화면)
-                                              context,
-                                            );
+                                            // Navigator.pop(
+                                            //     context // 캘린더 화면으로 이동 (이전 화면)
+                                            // );
+                                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => TemperCalendar(email: widget.email)));
                                           },
                                         ),
                                       )
