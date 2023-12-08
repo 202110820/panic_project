@@ -250,12 +250,12 @@ class _DiaryExampleState extends State<DiaryExample> {
             Container(
               //color: Colors.blue,
               //   height: MediaQuery.of(context).size.height * 0.25,
-              width: MediaQuery.of(context).size.width * 0.80,
+                width: MediaQuery.of(context).size.width * 0.80,
                 child: Column(children: [
                   //SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
-                    Container(
-                      child: Text('How was your day today?', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: Color(0xFFA2C4C9),),textAlign: TextAlign.center,),
-                    ),
+                  Container(
+                    child: Text('How was your day today?', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: Color(0xFFA2C4C9),),textAlign: TextAlign.center,),
+                  ),
 
                   //일기 작성
                   Container(
@@ -315,34 +315,34 @@ class _DiaryExampleState extends State<DiaryExample> {
                         builder:(BuildContext context){
                           return AlertDialog(
                             content: Text("\n모든 항목을 채워주세요!",style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
                                 color: Colors.black
                             ),
-                            textAlign: TextAlign.center,),
+                              textAlign: TextAlign.center,),
                             actions: <Widget>[
                               Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: const Text('OK',style: TextStyle(
-                                    fontSize: 12,
-                                    fontFamily: 'Inter',
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white
+                                  children: [
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: const Text('OK',style: TextStyle(
+                                          fontSize: 12,
+                                          fontFamily: 'Inter',
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.white
+                                      ),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      style: ElevatedButton.styleFrom(
+                                        primary: Color(0xFF62B6B6),
+                                        fixedSize: const Size(80, 35),
+                                        //padding: const EdgeInsets.fromLTRB(0,0,10,0),
+                                      ),
                                     ),
-                                    textAlign: TextAlign.center,
-                                    ),
-                                    style: ElevatedButton.styleFrom(
-                                    primary: Color(0xFF62B6B6),
-                                    fixedSize: const Size(80, 35),
-                                    //padding: const EdgeInsets.fromLTRB(0,0,10,0),
-                                    ),
-                                  ),
-                                ]
+                                  ]
                               ),
                             ],
                           );
