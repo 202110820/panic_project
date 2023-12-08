@@ -18,6 +18,12 @@ class DetailDiary extends StatefulWidget {
 
 class _DetailDiaryState extends State<DetailDiary> {
 
+  String emoji = '';
+  String changedEmoji = '';
+  String changedDiary = '';
+  bool isSelectedEmoji = false;
+
+
   List<String> emojiList = [
     'assets/Calendar/Emoji/emoji_happy.png', 'assets/Calendar/Emoji/emoji_smile.png', 'assets/Calendar/Emoji/emoji_surprised.png',
     'assets/Calendar/Emoji/emoji_heart_fluttering.png', 'assets/Calendar/Emoji/emoji_shy.png', 'assets/Calendar/Emoji/emoji_tired.png',
@@ -46,30 +52,6 @@ class _DetailDiaryState extends State<DetailDiary> {
                       context // 캘린더 화면으로 이동 (이전 화면)
                   );
                 }),
-
-            //Save 버튼
-            actions: [
-              Container(
-                height: MediaQuery.of(context).size.height * 0.05,
-                width: MediaQuery.of(context).size.width * 0.25,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    //shadowColor: Colors.grey,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  ),
-                  child: Text("Save", style: TextStyle(fontSize: 15.28, color: Color.fromRGBO(154, 154, 154, 1), fontFamily: 'Poppins', fontWeight: FontWeight.w700),
-                    textAlign: TextAlign.center,),
-                  onPressed: () {
-                    Navigator.pop( // 캘린더 화면으로 이동 (이전 화면)
-                      context,
-                    );
-                  },
-                ),
-              )
-            ],
           ),
           extendBodyBehindAppBar: true,
           body: Center(
@@ -93,13 +75,14 @@ class _DetailDiaryState extends State<DetailDiary> {
                                 else{
                                   final documents = snapshot.data!.docs;
                                   final widgets = documents.map((DocumentSnapshot document){
+                                    emoji = document['emotion'];
                                     return Column(children: [
                                       SizedBox(height: MediaQuery.of(context).size.height * 0.10,),
 
                                       // 날짜 및 온도 행
                                       Container(
                                           child: Column(children: [
-                                            SizedBox(height: MediaQuery.of(context).size.height * 0.03,),
+                                            SizedBox(height: MediaQuery.of(context).size.height * 0.05,),
                                             Row(
                                               mainAxisAlignment: MainAxisAlignment.center,
                                               children: [
@@ -110,9 +93,9 @@ class _DetailDiaryState extends State<DetailDiary> {
                                           ],)
                                       ),
 
-                                      SizedBox(height: MediaQuery.of(context).size.height * 0.05,),
-                                      Container(child: Text("Record today's feelings.", style: TextStyle(fontSize: 18),)),
-                                      SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
+                                      // SizedBox(height: MediaQuery.of(context).size.height * 0.05,),
+                                      // Container(child: Text("Record today's feelings.", style: TextStyle(fontSize: 18),)),
+                                      // SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
 
                                       // 감정 기록
                                       Container(
@@ -128,6 +111,7 @@ class _DetailDiaryState extends State<DetailDiary> {
                                                       backgroundColor: Colors.white,
                                                       title: Text("Record today's feelings.", textAlign: TextAlign.center),
                                                       content: Container(
+                                                        margin: EdgeInsets.only(top: 20),
                                                         height: MediaQuery.of(context).size.height * 0.40, // 그리드 높이 조정
                                                         width: MediaQuery.of(context).size.width * 0.40, // 그리드 너비 조정
                                                         child: GridView.builder(
@@ -147,7 +131,8 @@ class _DetailDiaryState extends State<DetailDiary> {
                                                               // emotion 수정
                                                               onTap: () {
                                                                 setState(() {
-                                                                  document.reference.set({'emotion': emojiList[index],}, SetOptions(merge: true)); // 바뀐 감정 데이터 firebase에 저장
+                                                                  changedEmoji = emojiList[index];
+                                                                  //document.reference.set({'emotion': emojiList[index],}, SetOptions(merge: true)); // 바뀐 감정 데이터 firebase에 저장
                                                                 });
                                                               },
                                                             );
@@ -159,7 +144,7 @@ class _DetailDiaryState extends State<DetailDiary> {
                                                             mainAxisAlignment: MainAxisAlignment.center, // 가운데 정렬
                                                             children: <Widget>[
                                                               Container(
-                                                                height: MediaQuery.of(context).size.height * 0.08,
+                                                                height: MediaQuery.of(context).size.height * 0.075,
                                                                 width: MediaQuery.of(context).size.width * 0.30,
                                                                 child: ElevatedButton(
                                                                   style: ElevatedButton.styleFrom(
@@ -169,13 +154,14 @@ class _DetailDiaryState extends State<DetailDiary> {
                                                                     ),
                                                                   ),
                                                                   onPressed: () {
-                                                                    print("Now Emoji: ${document['emotion']}");
-                                                                    Navigator.pop(context, document['emotion']);
+                                                                    setState(() {
+                                                                      isSelectedEmoji = true;
+                                                                    });
+                                                                    print("Now Emoji: ${changedEmoji}");
+                                                                    Navigator.pop(context, changedEmoji);
                                                                   },
-                                                                  child: Text("OK", style: TextStyle(fontSize: 22, shadows:[
-                                                                    Shadow(color: Colors.grey, offset: Offset(1,2), blurRadius: 5)],),
-                                                                  ),
-                                                                ),
+                                                                  child: Text("OK", style: TextStyle(fontSize: 22,fontFamily: 'Inter',color: Colors.white, fontWeight: FontWeight.w500),),
+                                                                )
                                                               )
                                                             ]
                                                         ),
@@ -184,7 +170,8 @@ class _DetailDiaryState extends State<DetailDiary> {
                                                   },
                                                 );
                                               },
-                                              icon: Image.asset(document['emotion']), iconSize: 100, // 변경된 emotion으로 icon 설정
+                                              icon: (changedEmoji != '') ? Image.asset(changedEmoji) : Image.asset(emoji), iconSize: 100,
+                                              //icon: Image.asset(changedEmoji), iconSize: 100, // 변경된 emotion으로 icon 설정
                                             ),
                                           ],)
                                       ),
@@ -193,18 +180,18 @@ class _DetailDiaryState extends State<DetailDiary> {
 
                                       // 다이어리
                                       Container(
-                                          height: MediaQuery.of(context).size.height * 0.25,
+                                          //height: MediaQuery.of(context).size.height * 0.25,
                                           width: MediaQuery.of(context).size.width * 0.80,
                                           child: Column(children: [
-                                            Row(children: [
-                                              Container(
-                                                child: Text('How was your day today?', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
-                                              ),
-                                            ],),
+                                            Container(
+                                              child: Text('How was your day today?', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: Color(0xFFA2C4C9),),textAlign: TextAlign.center,),
+                                            ),
 
                                             // 일기 수정
                                             Container(
+                                              height: MediaQuery.of(context).size.height * 0.40,
                                               child: TextFormField(
+                                                textAlign: TextAlign.center,
                                                 initialValue: document['contents'], // 초기값
                                                 minLines: 1,
                                                 maxLines: null,
@@ -218,13 +205,40 @@ class _DetailDiaryState extends State<DetailDiary> {
                                                 ),
                                                 onChanged: (text){
                                                   setState(() {
-                                                    document.reference.set({'contents': text}, SetOptions(merge: true)); // 바뀐 일기 데이터 저장
+                                                    changedDiary = text;
+                                                    //document.reference.set({'contents': text}, SetOptions(merge: true)); // 바뀐 일기 데이터 저장
                                                   });
                                                 },
                                               ),
                                             ),
                                           ],)
                                       ),
+                                      SizedBox(height: MediaQuery.of(context).size.height * 0.05,),
+                                      //저장 버튼
+                                      Container(
+                                        alignment: Alignment.bottomCenter,
+                                        // height: MediaQuery.of(context).size.height * 0.05,
+                                        // width: MediaQuery.of(context).size.width * 0.25,
+                                        child: ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            primary: Color(0xFF62B6B6),
+                                            fixedSize: const Size(85, 20),
+                                          ),
+                                          child: Text("Save", style: TextStyle(fontSize: 15.28, color: Colors.white, fontFamily: 'Poppins', fontWeight: FontWeight.w700),
+                                            textAlign: TextAlign.center,),
+                                          onPressed: () {
+                                            if(changedEmoji != ''){
+                                              document.reference.set({'emotion': changedEmoji,}, SetOptions(merge: true)); // 바뀐 감정 데이터 firebase에 저장
+                                            }
+                                            if(changedDiary != ''){
+                                              document.reference.set({'contents': changedDiary}, SetOptions(merge: true)); // 바뀐 일기 데이터 저장
+                                            }
+                                            Navigator.pop( // 캘린더 화면으로 이동 (이전 화면)
+                                              context,
+                                            );
+                                          },
+                                        ),
+                                      )
                                     ]);
                                   }).toList();
                                   return Column(children: widgets,);
