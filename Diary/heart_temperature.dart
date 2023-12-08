@@ -128,64 +128,6 @@ class _DiaryExampleState extends State<DiaryExample> {
                           );
                         })
                 ),
-
-                SizedBox(width: MediaQuery.of(context).size.width * 0.60,),
-
-                // 저장하기 버튼
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.05,
-                  width: MediaQuery.of(context).size.width * 0.25,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
-                    child: Text("Save", style: TextStyle(fontSize: 15.28, color: Color.fromRGBO(154, 154, 154, 1), fontFamily: 'Poppins', fontWeight: FontWeight.w700),
-                      textAlign: TextAlign.center,),
-                    onPressed: () {
-                      selectedHeartImage = heartImages[temperature.toInt()] ?? 'assets/Calendar/HeartPercentage/empty_heart.png';
-                      diaryText = _contentEditController.text; //일기 기록 내용
-
-                      if (selectedHeartImage.isNotEmpty &&
-                          selectedEmoji.isNotEmpty &&
-                          diaryText.isNotEmpty){
-                        // 선택한 온도와 관련된 이미지를 이전 화면(캘린더 화면)으로 반환
-                        print('Selected Heart Image: $selectedHeartImage');
-                        print('Today Emoji is: $selectedEmoji');
-
-                        // DB 저장!
-                        addCalendar(widget.selectedDay, diaryText, selectedEmoji, (temperature.toInt()).toString(), widget.email);
-
-                        Navigator.pop( // 이전 화면 (캘린더 화면)
-                          context,
-                        );
-                      }else {
-                        // 하나라도 기록을 안 했을 때 경고문 표시
-                        showDialog(
-                            context: context,
-                            barrierDismissible: false,
-                            builder:(BuildContext context){
-                              return AlertDialog(
-                                content: Text("모든 항목을 채워주세요."),
-                                actions: <Widget>[
-                                  TextButton(
-                                    child: Text("OK", style: TextStyle(color: Color.fromRGBO(162, 196, 201, 1),),),
-                                    onPressed: (){
-                                      Navigator.of(context).pop();
-                                    },
-                                  )
-                                ],
-                              );
-                            }
-                        );
-                      }
-                    },
-                  ),
-                ),
-
-                SizedBox(width: MediaQuery.of(context).size.width * 0.03,),
               ],)
           )
         ],
@@ -215,15 +157,15 @@ class _DiaryExampleState extends State<DiaryExample> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(formatSelectedDay(widget.selectedDay), style: TextStyle(fontSize: 16)), // 날짜
+                      Text(formatSelectedDay(widget.selectedDay), style: TextStyle(fontWeight: FontWeight.w800, fontSize: 18)), // 날짜
                       SizedBox(width: MediaQuery.of(context).size.width * 0.60,),
-                      Text('${temperature.toInt()}°C', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),), // 온도
+                      Text('${temperature.toInt()}°C', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 18),), // 온도
                     ],)
                 ],)
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.05,),
-            Container(child:Text("Record today's feelings.", style: TextStyle(fontSize: 18),)),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
+            // SizedBox(height: MediaQuery.of(context).size.height * 0.05,),
+            // Container(child:Text("Record today's feelings.", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18),)),
+            // SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
 
             // 감정 기록
             Container(
@@ -307,18 +249,20 @@ class _DiaryExampleState extends State<DiaryExample> {
             // 다이어리
             Container(
               //color: Colors.blue,
-                height: MediaQuery.of(context).size.height * 0.25,
-                width: MediaQuery.of(context).size.width * 0.80,
+              //   height: MediaQuery.of(context).size.height * 0.25,
+              width: MediaQuery.of(context).size.width * 0.80,
                 child: Column(children: [
-                  Row(children: [
+                  //SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
                     Container(
-                      child: Text('How was your day today?', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                      child: Text('How was your day today?', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: Color(0xFFA2C4C9),),textAlign: TextAlign.center,),
                     ),
-                  ],),
 
                   //일기 작성
                   Container(
+                    height: MediaQuery.of(context).size.height * 0.40,
+                    //color: Colors.green,
                     child: TextField(
+                      textAlign: TextAlign.center,
                       controller: _contentEditController,
                       minLines: 1,
                       maxLines: null,
@@ -333,6 +277,80 @@ class _DiaryExampleState extends State<DiaryExample> {
                     ),
                   ),
                 ],)
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.05,),
+            // 저장하기 버튼
+            Container(
+              //color: Colors.red,
+              alignment: Alignment.bottomCenter,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xFF62B6B6),
+                  fixedSize: const Size(85, 20),
+                ),
+                child: Text("Save", style: TextStyle(fontSize: 15.28, color: Colors.white, fontFamily: 'Poppins', fontWeight: FontWeight.w700),
+                  textAlign: TextAlign.center,),
+                onPressed: () {
+                  selectedHeartImage = heartImages[temperature.toInt()] ?? 'assets/Calendar/HeartPercentage/empty_heart.png';
+                  diaryText = _contentEditController.text; //일기 기록 내용
+
+                  if (selectedHeartImage.isNotEmpty &&
+                      selectedEmoji.isNotEmpty &&
+                      diaryText.isNotEmpty){
+                    // 선택한 온도와 관련된 이미지를 이전 화면(캘린더 화면)으로 반환
+                    print('Selected Heart Image: $selectedHeartImage');
+                    print('Today Emoji is: $selectedEmoji');
+
+                    // DB 저장!
+                    addCalendar(widget.selectedDay, diaryText, selectedEmoji, (temperature.toInt()).toString(), widget.email);
+
+                    Navigator.pop( // 이전 화면 (캘린더 화면)
+                      context,
+                    );
+                  }else {
+                    // 하나라도 기록을 안 했을 때 경고문 표시
+                    showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder:(BuildContext context){
+                          return AlertDialog(
+                            content: Text("\n모든 항목을 채워주세요!",style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                                color: Colors.black
+                            ),
+                            textAlign: TextAlign.center,),
+                            actions: <Widget>[
+                              Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: const Text('OK',style: TextStyle(
+                                    fontSize: 12,
+                                    fontFamily: 'Inter',
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white
+                                    ),
+                                    textAlign: TextAlign.center,
+                                    ),
+                                    style: ElevatedButton.styleFrom(
+                                    primary: Color(0xFF62B6B6),
+                                    fixedSize: const Size(80, 35),
+                                    //padding: const EdgeInsets.fromLTRB(0,0,10,0),
+                                    ),
+                                  ),
+                                ]
+                              ),
+                            ],
+                          );
+                        }
+                    );
+                  }
+                },
+              ),
             ),
           ]
       ),
@@ -357,36 +375,35 @@ class _DiaryExampleState extends State<DiaryExample> {
               actions: [
                 IconButton(icon: Icon(Icons.question_mark, size: 30, color: Colors.grey), onPressed:(){
                   showDialog(
+                    //barrierColor: Colors.white,
                       context: context,
                       barrierDismissible: true, //바깥영역 터치 시 닫을지 여부
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          content: Center(
-                              child: Column(mainAxisSize: MainAxisSize.min, children: [
-                                Container(
-                                    child: Text.rich(
+                          backgroundColor: Colors.white,
+                          content: Column(mainAxisSize: MainAxisSize.min, children: [
+                            SizedBox(height: 10,),
+                            Container(
+                                child: Text.rich(
+                                  TextSpan(
+                                    children: <TextSpan>[
                                       TextSpan(
-                                        children: <TextSpan>[
-                                          TextSpan(
-                                            text: "오늘의 하트를 채워주세요.\n",
-                                            style: TextStyle(color: Color.fromRGBO(153, 150, 150, 1), fontSize: 17, fontWeight: FontWeight.w600, fontFamily: 'Archivo',),
-                                          ),
-                                          TextSpan(
-                                            text: "-100°C부터 0°C까지 기분을 하트로 표현하세요.",
-                                            style: TextStyle(color: Color.fromRGBO(153, 150, 150, 1), fontSize: 13, fontWeight: FontWeight.w600, fontFamily: 'Archivo'),
-                                          ),
-                                        ],
+                                        text: "오늘의 하트를 채워주세요.\n",
+                                        style: TextStyle(color: Color.fromRGBO(153, 150, 150, 1), fontSize: 17, fontWeight: FontWeight.w800, fontFamily: 'Archivo',),
                                       ),
-                                    )
-                                ),
-                                Container(
-                                  child: Image.asset('assets/Calendar/TemperatureGuide.png'),
-
-                                  height: MediaQuery.of(context).size.height * 0.60,
-                                  width: MediaQuery.of(context).size.width * 0.50,
-                                ),
-                              ],)
-                          ),
+                                      TextSpan(
+                                        text: "-100°C부터 0°C까지 기분을\n하트로 표현하세요.",
+                                        style: TextStyle(color: Color.fromRGBO(153, 150, 150, 1), fontSize: 13, fontWeight: FontWeight.w600, fontFamily: 'Archivo'),
+                                      ),
+                                    ],
+                                  ),textAlign: TextAlign.center,
+                                )
+                            ),
+                            SizedBox(height: 20,),
+                            Container(
+                              child: Image.asset('assets/Calendar/TemperatureGuide.png'),
+                            ),
+                          ],),
                         );
                       }
                   );
@@ -394,79 +411,82 @@ class _DiaryExampleState extends State<DiaryExample> {
               ],
             ),
             extendBodyBehindAppBar: true,
-            body: Center(
-              child: Column(
-                children: [
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.20,),
+            body:
+            SingleChildScrollView(
+              child: Center(
+                child: Column(
+                  children: [
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.20,),
 
-                  //문구
-                  Container(
-                      child: Text("What's the temperature\nof your mind today?", textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 22, color: Color.fromRGBO(60, 60, 60, 1), fontWeight: FontWeight.w700, fontFamily: 'Inter'))
-                  ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.03,),
-                  Container(
-                      child: Column(children: <Widget>[
+                    //문구
+                    Container(
+                        child: Text("What's the temperature\nof your mind today?", textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 22, color: Color.fromRGBO(60, 60, 60, 1), fontWeight: FontWeight.w700, fontFamily: 'Inter'))
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.03,),
+                    Container(
+                        child: Column(children: <Widget>[
 
-                        // 하트 이미지
-                        Container(
-                          child: Image.asset('assets/Calendar/HeartPercentage/heart${temperature.round()}.png'),
-                          height: MediaQuery.of(context).size.height * 0.08,
-                          width: MediaQuery.of(context).size.width * 0.15,
-                        ),
-                        SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-
-                        // 마음 온도계
-                        Container(
-                          child: SleekCircularSlider(
-                            initialValue: temperature,
-                            min: 0,
-                            max: 100,
-                            appearance: CircularSliderAppearance(
-                                size: 300,
-                                startAngle: 180,
-                                angleRange: 180,
-                                customWidths: CustomSliderWidths(progressBarWidth: 15),
-
-                                customColors: CustomSliderColors(
-                                  progressBarColors: [Color.fromRGBO(204, 22, 60, 1), Color.fromRGBO(255, 224, 230, 1)],
-                                  trackColor: Colors.grey,
-                                  dotColor: Colors.grey,
-
-                                  hideShadow: true, // progressBar 그림자 제거
-                                  gradientStartAngle: 0.0, // 그라데이션 시작 각도 설정
-                                  gradientEndAngle: 180.0,
-                                )
-                            ),
-                            // 온도계 안에 숫자 위젯
-                            innerWidget: (double value) {
-                              return Center(
-                                  child: Text.rich(
-                                    TextSpan(
-                                      children: <TextSpan>[
-                                        TextSpan(
-                                          text: "${temperature.toInt()}",
-                                          style: TextStyle(color: Color.fromRGBO(60, 60, 60, 1), fontSize: 80, fontWeight: FontWeight.w600, fontFamily: 'Baloo 2'),
-                                        ),
-                                        TextSpan(
-                                          text: "°C",
-                                          style: TextStyle(color: Color.fromRGBO(60, 60, 60, 1), fontSize: 45, fontWeight: FontWeight.w600, fontFamily: 'Baloo 2'),
-                                        ),
-                                      ],
-                                    ),
-                                  )
-                              );
-                            },
-                            onChange: (double value) {
-                              setState(() {
-                                temperature = (value / 10).round() * 10;
-                              });
-                            },
+                          // 하트 이미지
+                          Container(
+                            child: Image.asset('assets/Calendar/HeartPercentage/heart${temperature.round()}.png'),
+                            height: MediaQuery.of(context).size.height * 0.08,
+                            width: MediaQuery.of(context).size.width * 0.15,
                           ),
-                        ),
-                      ],)
-                  ),
-                ],
+                          SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+
+                          // 마음 온도계
+                          Container(
+                            child: SleekCircularSlider(
+                              initialValue: temperature,
+                              min: 0,
+                              max: 100,
+                              appearance: CircularSliderAppearance(
+                                  size: 300,
+                                  startAngle: 180,
+                                  angleRange: 180,
+                                  customWidths: CustomSliderWidths(progressBarWidth: 15),
+
+                                  customColors: CustomSliderColors(
+                                    progressBarColors: [Color.fromRGBO(204, 22, 60, 1), Color.fromRGBO(255, 224, 230, 1)],
+                                    trackColor: Colors.grey,
+                                    dotColor: Colors.grey,
+
+                                    hideShadow: true, // progressBar 그림자 제거
+                                    gradientStartAngle: 0.0, // 그라데이션 시작 각도 설정
+                                    gradientEndAngle: 180.0,
+                                  )
+                              ),
+                              // 온도계 안에 숫자 위젯
+                              innerWidget: (double value) {
+                                return Center(
+                                    child: Text.rich(
+                                      TextSpan(
+                                        children: <TextSpan>[
+                                          TextSpan(
+                                            text: "${temperature.toInt()}",
+                                            style: TextStyle(color: Color.fromRGBO(60, 60, 60, 1), fontSize: 80, fontWeight: FontWeight.w600, fontFamily: 'Baloo 2'),
+                                          ),
+                                          TextSpan(
+                                            text: "°C",
+                                            style: TextStyle(color: Color.fromRGBO(60, 60, 60, 1), fontSize: 45, fontWeight: FontWeight.w600, fontFamily: 'Baloo 2'),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                );
+                              },
+                              onChange: (double value) {
+                                setState(() {
+                                  temperature = (value / 10).round() * 10;
+                                });
+                              },
+                            ),
+                          ),
+                        ],)
+                    ),
+                  ],
+                ),
               ),
             )
         )
