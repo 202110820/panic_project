@@ -129,6 +129,13 @@ class _TemperCalendarState extends State<TemperCalendar> {
                 });
               }
             },
+                  
+            // 페이지 넘어갈때의 focus 고정  <-- 추가
+            onPageChanged: (focusedDay) {
+              // No need to call `setState()` here
+              _focusedDay = focusedDay;
+            },
+                  
             // 온도에 따른 하트 이미지
             calendarBuilders: CalendarBuilders(
               markerBuilder: (context, date, events) {
