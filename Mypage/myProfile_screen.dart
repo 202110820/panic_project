@@ -31,37 +31,42 @@ class _MyprofileState extends State<Myprofile> {
 
   @override
   Widget build(BuildContext context){
-    return MaterialApp(
-        theme: ThemeData(scaffoldBackgroundColor: Colors.white, useMaterial3: true,),
-        home: Scaffold(
-            resizeToAvoidBottomInset : false, //키보드 bottom overflow 방지
-            appBar: AppBar(
-              backgroundColor: Colors.white,
-              centerTitle: true,
-              elevation: 0,
-              leading:IconButton(icon: Icon(Icons.arrow_back_ios, size: 30, color: Color.fromRGBO(151, 151, 151, 1)), onPressed:() {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => MyApp(), //메인 화면으로 이동
-                  ),
-                );
-              }),
-            ),
-            extendBodyBehindAppBar: true,
-            body: Center(
-                child: Column(
-                    children: [
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.13,),
-                      Title(),
-                      UserInformation(email: widget.email),
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.03,),
-                      EditButton(email: widget.email),
-                      LogoutButton(),
-                    ]
-                )
-            )
-        )
+    return WillPopScope(
+      onWillPop: ()  {
+        return Future(() => false); //뒤로가기 막음
+      },
+      child: MaterialApp(
+          theme: ThemeData(scaffoldBackgroundColor: Colors.white, useMaterial3: true,),
+          home: Scaffold(
+              resizeToAvoidBottomInset : false, //키보드 bottom overflow 방지
+              appBar: AppBar(
+                backgroundColor: Colors.white,
+                centerTitle: true,
+                elevation: 0,
+                leading:IconButton(icon: Icon(Icons.arrow_back_ios, size: 30, color: Color.fromRGBO(151, 151, 151, 1)), onPressed:() {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MyApp(), //메인 화면으로 이동
+                    ),
+                  );
+                }),
+              ),
+              extendBodyBehindAppBar: true,
+              body: Center(
+                  child: Column(
+                      children: [
+                        SizedBox(height: MediaQuery.of(context).size.height * 0.13,),
+                        Title(),
+                        UserInformation(email: widget.email),
+                        SizedBox(height: MediaQuery.of(context).size.height * 0.03,),
+                        EditButton(email: widget.email),
+                        LogoutButton(),
+                      ]
+                  )
+              )
+          )
+      ),
     );
   }
 }

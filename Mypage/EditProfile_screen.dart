@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/cupertino.dart'; //CupertinoDatePicker, CupertinoButton 패키지
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:main/database_service.dart';
+import 'package:contact2/database_service.dart';
 import 'package:intl/intl.dart';
 
 import 'myProfile_screen.dart';
@@ -40,7 +40,7 @@ class EditPage extends StatefulWidget {
 }
 
 class _EditPageState extends State<EditPage> {
-  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -307,36 +307,36 @@ class _UserInformationState extends State<UserInformation> {
                         SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
                         // 저장 버튼
                         Container(
-                          alignment: Alignment.bottomCenter,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Color.fromRGBO(98, 183, 183, 1),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
+                            alignment: Alignment.bottomCenter,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Color.fromRGBO(98, 183, 183, 1),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                minimumSize: Size(MediaQuery.of(context).size.width * 0.80, MediaQuery.of(context).size.height * 0.06),
                               ),
-                              minimumSize: Size(MediaQuery.of(context).size.width * 0.80, MediaQuery.of(context).size.height * 0.06),
-                            ),
-                            onPressed: () {
-                              if(_isEditingGender == true){
-                                document.reference.set({'sex': changedGender}, SetOptions(merge: true)); // 바뀐 성별 데이터 저장
-                                _isEditingGender = false;
-                              }
-                              if(_isEditingBirth == true){
-                                document.reference.set({'birth': tempPickedDate}, SetOptions(merge: true)); // 바뀐 성별 데이터 저장
-                                _isEditingBirth = false;
-                              }
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Myprofile(email: widget.email)));
-                            },
-                            child: Text('Update',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 15,
-                                fontFamily: 'Inter',
-                                fontWeight: FontWeight.w700,
+                              onPressed: () {
+                                if(_isEditingGender == true){
+                                  document.reference.set({'sex': changedGender}, SetOptions(merge: true)); // 바뀐 성별 데이터 저장
+                                  _isEditingGender = false;
+                                }
+                                if(_isEditingBirth == true){
+                                  document.reference.set({'birth': tempPickedDate}, SetOptions(merge: true)); // 바뀐 성별 데이터 저장
+                                  _isEditingBirth = false;
+                                }
+                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Myprofile(email: widget.email)));
+                              },
+                              child: Text('Update',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                  fontFamily: 'Inter',
+                                  fontWeight: FontWeight.w700,
+                                ),
+                                textAlign: TextAlign.center,
                               ),
-                              textAlign: TextAlign.center,
-                            ),
-                          )
+                            )
                         ),
                       ],)
                   )
