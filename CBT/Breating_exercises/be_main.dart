@@ -16,28 +16,15 @@ class Be_main extends StatelessWidget {
               backgroundColor: Colors.transparent,
               elevation: 0.0,
               leading:
-                  IconButton(
-                      icon: Icon(Icons.arrow_back_ios),
-                      iconSize: 30,
-                      color: Color.fromRGBO(151, 151, 151, 1),
-                      onPressed:() {
-                        Navigator.of(context).popUntil((route) => route.isFirst);
-                        }
-                      ),
-                  actions: [
-                    IconButton(
-                      icon: Icon(Icons.question_mark),
-                      iconSize: 30,
-                      color: Color.fromRGBO(151, 151, 151, 1),
-                      onPressed:() {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (_) => Be_step_1()),
-                        );
-                      }
-                  ),
-                ],
+              IconButton(
+                  icon: Icon(Icons.arrow_back_ios),
+                  iconSize: 30,
+                  color: Color.fromRGBO(151, 151, 151, 1),
+                  onPressed:() {
+                    Navigator.of(context).popUntil((route) => route.isFirst);
+                  }
               ),
+            ),
             extendBodyBehindAppBar: true,
             body: Column(
               children: [
@@ -78,7 +65,7 @@ class Be_main extends StatelessWidget {
 
                 //이미지
                 Container(
-                    //alignment: Alignment.bottomRight,
+                  //alignment: Alignment.bottomRight,
                     margin: EdgeInsets.only(top: 25),
                     child: Image.asset('assets/bemain.png', width: 175,)
                 ),
@@ -100,58 +87,124 @@ class Be_main extends StatelessWidget {
 
                 //Start 버튼
                 Expanded(
-                  child: Container(
-                    margin: EdgeInsets.only(bottom: 40),
-                    alignment: Alignment.center,
-                    child: InkWell(
-                      borderRadius: BorderRadius.all(
-                          Radius.circular(5)
-                      ),
-                      onTap: (){
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (_) => AnimatedSizeScreen()),
-                        );
-                      },
-                      child: Container(
-                          width: (MediaQuery.of(context).size.width)*0.8,
-                          height:  (MediaQuery.of(context).size.height)*0.1,
-
-                          decoration: ShapeDecoration(
-                              color:Color(0xFF62B6B6),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(25)
-                              ),
-                              shadows: [
-                                BoxShadow(
-                                  color: Colors.grey,
-                                  blurRadius: 5,
-                                  offset: Offset(0, 0),
-                                  spreadRadius: 1,
-                                )
-                              ]
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(bottom: 30),
+                        alignment: Alignment.center,
+                        child: InkWell(
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(5)
                           ),
+                          onTap: (){
+                            Navigator.push(
+                              context,
+                              PageRouteBuilder(
+                                pageBuilder: (context, animation1, animation2) => Be_step_1(),
+                                transitionDuration: Duration.zero,
+                                reverseTransitionDuration: Duration.zero,
+                              ),
+                            );
+                          },
+                          child: Container(
+                              width: (MediaQuery.of(context).size.width)*0.36,
+                              height:  (MediaQuery.of(context).size.height)*0.1,
 
-                          child: Stack(
-                              children: [
-                                Center(
-                                  child: Container(
-                                    //margin: EdgeInsets.only(left: 15, top: 17),
-                                    child: Text('Start',
-                                      textAlign: TextAlign.start,
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 25,
-                                        fontFamily: 'Inter',
-                                        fontWeight: FontWeight.w600,
+                              decoration: ShapeDecoration(
+                                  color:Color(0xFF62B6B6),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(25)
+                                  ),
+                                  shadows: [
+                                    BoxShadow(
+                                      color: Colors.grey,
+                                      blurRadius: 3,
+                                      offset: Offset(0, 0),
+                                      spreadRadius: 1,
+                                    )
+                                  ]
+                              ),
+
+                              child: Stack(
+                                  children: [
+                                    Center(
+                                      child: Container(
+                                        //margin: EdgeInsets.only(left: 15, top: 17),
+                                        child: Text('Guide',
+                                          textAlign: TextAlign.start,
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 25,
+                                            fontFamily: 'Inter',
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ),
-                              ]
-                          )
+                                  ]
+                              )
+                          ),
+                        ),
                       ),
-                    ),
+                      Container(
+                        margin: EdgeInsets.only(bottom: 30),
+                        alignment: Alignment.center,
+                        child: InkWell(
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(5)
+                          ),
+                          onTap: (){
+                            Navigator.push(
+                              context,
+                              PageRouteBuilder(
+                                pageBuilder: (context, animation1, animation2) => AnimatedSizeScreen(),
+                                transitionDuration: Duration.zero,
+                                reverseTransitionDuration: Duration.zero,
+                              ),
+                            );
+                          },
+                          child: Container(
+                              width: (MediaQuery.of(context).size.width)*0.36,
+                              height:  (MediaQuery.of(context).size.height)*0.1,
+
+                              decoration: ShapeDecoration(
+                                  color:Color(0xFF62B6B6),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(25)
+                                  ),
+                                  shadows: [
+                                    BoxShadow(
+                                      color: Colors.grey,
+                                      blurRadius: 3,
+                                      offset: Offset(0, 0),
+                                      spreadRadius: 1,
+                                    )
+                                  ]
+                              ),
+
+                              child: Stack(
+                                  children: [
+                                    Center(
+                                      child: Container(
+                                        //margin: EdgeInsets.only(left: 15, top: 17),
+                                        child: Text('Start',
+                                          textAlign: TextAlign.start,
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 25,
+                                            fontFamily: 'Inter',
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ]
+                              )
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 )
               ],
