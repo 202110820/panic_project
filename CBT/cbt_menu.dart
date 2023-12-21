@@ -61,110 +61,121 @@ class Cbt_menu extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     //과대평가란? 버튼
-                    InkWell(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(5)
-                      ),
-                      onTap: (){
-                        {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (_) => Over_1()),
-                          );
-                        }
-                      },
-                      child: Container(
-                        width: (MediaQuery.of(context).size.width)*0.4,
-                        height:  (MediaQuery.of(context).size.height)*0.135,
+                    Ink(
+                      width: (MediaQuery.of(context).size.width)*0.4,
+                      height:  (MediaQuery.of(context).size.height)*0.135,
 
-                        decoration: ShapeDecoration(
-                            color:Color(0xFFD9E6E9),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(25)
-                            ),
-                            shadows: [
-                              BoxShadow(
-                                color: Colors.grey,
-                                blurRadius: 10,
-                                offset: Offset(0, 0),
-                                spreadRadius: 1,
-                              )
-                            ]
-                        ),
-
-                        child: Stack(
-                          children: [
-                            Container(
-                              margin: EdgeInsets.only(left: 15, top: 17),
-                              child: Text('과대평가란?',
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 17,
-                                  fontFamily: 'Inter',
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(left: 80, top: 45),
-                              child: Image(image: AssetImage('assets/cbt_1.png'),
-                                  width: 70),
+                      decoration: ShapeDecoration(
+                          color:Color(0xFFD9E6E9),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25)
+                          ),
+                          shadows: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              blurRadius: 10,
+                              offset: Offset(0, 0),
+                              spreadRadius: 1,
                             )
                           ]
-                        )
+                      ),
+
+                      child: InkWell(
+                        borderRadius: BorderRadius.all(
+                            Radius.circular(25)
+                        ),
+                        onTap: (){
+                          {
+                            Navigator.push(
+                              context,
+                              PageRouteBuilder(
+                                pageBuilder: (context, animation1, animation2) => Over_1(),
+                                transitionDuration: Duration.zero,
+                                reverseTransitionDuration: Duration.zero,
+                              ),
+                            );
+                          }
+                        },
+                        child: Container(
+
+                            child: Stack(
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(left: 15, top: 17),
+                                    child: Text('과대평가란?',
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 17,
+                                        fontFamily: 'Inter',
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(left: 80, top: 45),
+                                    child: Image(image: AssetImage('assets/cbt_1.png'),
+                                        width: 70),
+                                  )
+                                ]
+                            )
+                        ),
                       ),
                     ),
                     //과대평가 극복 Tip 버튼
-                    InkWell(
-                      borderRadius: BorderRadius.all(
-                          Radius.circular(5)
+                    Ink(
+                      width: (MediaQuery.of(context).size.width)*0.4,
+                      height:  (MediaQuery.of(context).size.height)*0.135,
+
+                      decoration: ShapeDecoration(
+                          color:Color(0xFFD9E6E9),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25)
+                          ),
+                          shadows: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              blurRadius: 10,
+                              offset: Offset(0, 0),
+                              spreadRadius: 1,
+                            )
+                          ]
                       ),
-                      onTap: (){
+                      child: InkWell(
 
-                      },
-                      child: Container(
-                        //padding: EdgeInsets.only(left:30),
-                        // margin: EdgeInsets.only(top: 10),
-                        width: (MediaQuery.of(context).size.width)*0.4,
-                        height:  (MediaQuery.of(context).size.height)*0.135,
 
-                        decoration: ShapeDecoration(
-                            color:Color(0xFFD9E6E9),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(25)
-                            ),
-                            shadows: [
-                              BoxShadow(
-                                color: Colors.grey,
-                                blurRadius: 10,
-                                offset: Offset(0, 0),
-                                spreadRadius: 1,
-                              )
-                            ]
+                        borderRadius: BorderRadius.all(
+                            Radius.circular(25)
                         ),
+                        onTap: (){
 
-                          child: Stack(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(left: 15, top: 17),
-                                  child: Text('과대평가\n극복 Tip',
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 17,
-                                      fontFamily: 'Inter',
-                                      fontWeight: FontWeight.w600,
+                        },
+                        child: Container(
+                          //padding: EdgeInsets.only(left:30),
+                          // margin: EdgeInsets.only(top: 10),
+
+                            child: Stack(
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(left: 15, top: 17),
+                                    child: Text('과대평가\n극복 Tip',
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 17,
+                                        fontFamily: 'Inter',
+                                        fontWeight: FontWeight.w600,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 80, top: 45),
-                                  child: Image(image: AssetImage('assets/cbt_2.png'),
-                                      width: 70),
-                                )
-                              ]
-                          )
+                                  Container(
+                                    margin: EdgeInsets.only(left: 80, top: 45),
+                                    child: Image(image: AssetImage('assets/cbt_2.png'),
+                                        width: 70),
+                                  )
+                                ]
+                            )
+                        ),
                       ),
                     ),
                   ],
@@ -188,111 +199,118 @@ class Cbt_menu extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     //재앙화 사고란? 버튼
-                    InkWell(
-                      borderRadius: BorderRadius.all(
-                          Radius.circular(5)
-                      ),
-                      onTap: (){
-                        {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (_) => Pc_1()),
-                          );
-                        }
-                      },
-                      child: Container(
-                          width: (MediaQuery.of(context).size.width)*0.4,
-                          height:  (MediaQuery.of(context).size.height)*0.13,
+                    Ink(
+                      width: (MediaQuery.of(context).size.width)*0.4,
+                      height:  (MediaQuery.of(context).size.height)*0.13,
 
-                          decoration: ShapeDecoration(
-                              color:Color(0xFFB5D0D4),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(25)
-                              ),
-                              shadows: [
-                                BoxShadow(
-                                  color: Colors.grey,
-                                  blurRadius: 10,
-                                  offset: Offset(0, 0),
-                                  spreadRadius: 1,
-                                )
-                              ]
+                      decoration: ShapeDecoration(
+                          color:Color(0xFFB5D0D4),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25)
                           ),
+                          shadows: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              blurRadius: 10,
+                              offset: Offset(0, 0),
+                              spreadRadius: 1,
+                            )
+                          ]
+                      ),
+                      child: InkWell(
 
-                          child: Stack(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(left: 15, top: 17),
-                                  child: Text('재앙화\n사고란?',
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 17,
-                                      fontFamily: 'Inter',
-                                      fontWeight: FontWeight.w600,
+                        borderRadius: BorderRadius.all(
+                            Radius.circular(25)
+                        ),
+                        onTap: (){
+                          {
+                            Navigator.push(
+                              context,
+                              PageRouteBuilder(
+                                pageBuilder: (context, animation1, animation2) => Pc_1(),
+                                transitionDuration: Duration.zero,
+                                reverseTransitionDuration: Duration.zero,
+                              ),
+                            );
+                          }
+                        },
+                        child: Container(
+
+
+                            child: Stack(
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(left: 15, top: 17),
+                                    child: Text('재앙화\n사고란?',
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 17,
+                                        fontFamily: 'Inter',
+                                        fontWeight: FontWeight.w600,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 80, top: 45),
-                                  child: Image(image: AssetImage('assets/cbt_3.png'),
-                                      width: 70),
-                                )
-                              ]
-                          )
-                      ),
+                                  Container(
+                                    margin: EdgeInsets.only(left: 80, top: 45),
+                                    child: Image(image: AssetImage('assets/cbt_3.png'),
+                                        width: 70),
+                                  )
+                                ]
+                            )
+                        ),
 
+                      ),
                     ),
                     //재앙화 사고 극복 Tip 버튼
-                    InkWell(
-                      borderRadius: BorderRadius.all(
-                          Radius.circular(5)
-                      ),
-                      onTap: (){},
-                      child: Container(
-                        //padding: EdgeInsets.only(left:30),
-                        // margin: EdgeInsets.only(top: 10),
-                          width: (MediaQuery.of(context).size.width)*0.4,
-                          height:  (MediaQuery.of(context).size.height)*0.135,
+                     Ink(
+                       width: (MediaQuery.of(context).size.width)*0.4,
+                       height:  (MediaQuery.of(context).size.height)*0.135,
 
-                          decoration: ShapeDecoration(
-                              color:Color(0xFFB5D0D4),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(25)
-                              ),
-                              shadows: [
-                                BoxShadow(
-                                  color: Colors.grey,
-                                  blurRadius: 10,
-                                  offset: Offset(0, 0),
-                                  spreadRadius: 1,
-                                )
-                              ]
-                          ),
-
-                          child: Stack(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(left: 15, top: 17),
-                                  child: Text('재앙화 사고\n극복 Tip',
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 17,
-                                      fontFamily: 'Inter',
-                                      fontWeight: FontWeight.w600,
+                       decoration: ShapeDecoration(
+                           color:Color(0xFFB5D0D4),
+                           shape: RoundedRectangleBorder(
+                               borderRadius: BorderRadius.circular(25)
+                           ),
+                           shadows: [
+                             BoxShadow(
+                               color: Colors.grey,
+                               blurRadius: 10,
+                               offset: Offset(0, 0),
+                               spreadRadius: 1,
+                             )
+                           ]
+                       ),
+                       child: InkWell(
+                        borderRadius: BorderRadius.all(
+                            Radius.circular(25)
+                        ),
+                        onTap: (){},
+                        child: Container(
+                            child: Stack(
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(left: 15, top: 17),
+                                    child: Text('재앙화 사고\n극복 Tip',
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 17,
+                                        fontFamily: 'Inter',
+                                        fontWeight: FontWeight.w600,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 80, top: 45),
-                                  child: Image(image: AssetImage('assets/cbt_2.png'),
-                                      width: 70),
-                                )
-                              ]
-                          )
-                      ),
+                                  Container(
+                                    margin: EdgeInsets.only(left: 80, top: 45),
+                                    child: Image(image: AssetImage('assets/cbt_2.png'),
+                                        width: 70),
+                                  )
+                                ]
+                            )
+                        ),
                     ),
+                     ),
                   ],
                 ),
 
@@ -314,59 +332,62 @@ class Cbt_menu extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     //역기능 버튼
-                    InkWell(
-                      borderRadius: BorderRadius.all(
-                          Radius.circular(5)
-                      ),
-                      onTap: (){},
-                      child: Container(
-                          width: (MediaQuery.of(context).size.width)*0.4,
-                          height:  (MediaQuery.of(context).size.height)*0.135,
+                    Ink(
+                      width: (MediaQuery.of(context).size.width)*0.4,
+                      height:  (MediaQuery.of(context).size.height)*0.135,
 
-                          decoration: ShapeDecoration(
-                              color:Color(0xFF91B7BF),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(25)
-                              ),
-                              shadows: [
-                                BoxShadow(
-                                  color: Colors.grey,
-                                  blurRadius: 10,
-                                  offset: Offset(0, 0),
-                                  spreadRadius: 1,
-                                )
-                              ]
+                      decoration: ShapeDecoration(
+                          color:Color(0xFF91B7BF),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25)
                           ),
+                          shadows: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              blurRadius: 10,
+                              offset: Offset(0, 0),
+                              spreadRadius: 1,
+                            )
+                          ]
+                      ),
 
-                          child: Stack(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(left: 15, top: 17),
-                                  child: Text('역기능적 사고\n기록기',
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 17,
-                                      fontFamily: 'Inter',
-                                      fontWeight: FontWeight.w600,
+                      child: InkWell(
+                        borderRadius: BorderRadius.all(
+                            Radius.circular(25)
+                        ),
+                        onTap: (){},
+                        child: Container(
+
+                            child: Stack(
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(left: 15, top: 17),
+                                    child: Text('역기능적 사고\n기록기',
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 17,
+                                        fontFamily: 'Inter',
+                                        fontWeight: FontWeight.w600,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 80, top: 45),
-                                  child: Image(image: AssetImage('assets/cbt_4.png'),
-                                      width: 70),
-                                )
-                              ]
-                          )
+                                  Container(
+                                    margin: EdgeInsets.only(left: 80, top: 45),
+                                    child: Image(image: AssetImage('assets/cbt_4.png'),
+                                        width: 70),
+                                  )
+                                ]
+                            )
+                        ),
                       ),
                     ),
                     //재앙화 사고 극복 Tip 버튼
                     Container(
-                          width: (MediaQuery.of(context).size.width)*0.4,
-                          height:  (MediaQuery.of(context).size.height)*0.135,
-                          color: Colors.transparent,
-                      ),
+                      width: (MediaQuery.of(context).size.width)*0.4,
+                      height:  (MediaQuery.of(context).size.height)*0.135,
+                      color: Colors.transparent,
+                    ),
                   ],
                 ),
               ],
