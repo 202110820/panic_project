@@ -11,12 +11,13 @@ import 'package:contact2/Mypage/splash_screen.dart';
 import 'package:contact2/Diary/check_login_status.dart';
 import 'package:contact2/map/check_login_status.dart';
 import 'package:contact2/model/model_auth.dart';
+import 'package:contact2/information/What_is_panic_disorder/pd_1.dart';
 // ...
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp( // firebase 초기화
-    options: DefaultFirebaseOptions.currentPlatform
+      options: DefaultFirebaseOptions.currentPlatform
   );
   runApp(MyApp());
 }
@@ -59,7 +60,7 @@ class _MyHomePage extends State<MyApp> with TickerProviderStateMixin {
               currentIndex: _selectedIndex,
               onTap: _onNavTapped,
               type: BottomNavigationBarType.fixed,
-              items: const[
+              items: const <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
                     icon: Icon(Icons.heart_broken),
                     label: "Diagnosis"),
