@@ -62,7 +62,7 @@ class Mr_link extends StatelessWidget {
                       child: Text("Follow this link",
                         style: TextStyle(fontSize: 16,
                             fontFamily: 'Inter', fontWeight: FontWeight.w600,
-                        color: Colors.grey),
+                            color: Colors.grey),
                         textAlign: TextAlign.center,
                       ),
                     )
@@ -73,105 +73,104 @@ class Mr_link extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    InkWell(
-                      borderRadius: BorderRadius.all(
-                          Radius.circular(5)
-                      ),
-                      onTap: (){
-                        {
-                        }
-                      },
-                      child: Container(
-                          width: (MediaQuery.of(context).size.width)*0.4,
-                          height:  (MediaQuery.of(context).size.height)*0.1,
+                    Ink(
+                      width: (MediaQuery.of(context).size.width)*0.4,
+                      height:  (MediaQuery.of(context).size.height)*0.1,
 
-                          decoration: ShapeDecoration(
-                              color:Color(0xFFD9E6E9),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(25)
-                              ),
-                              shadows: [
-                                BoxShadow(
-                                  color: Colors.grey,
-                                  blurRadius: 8,
-                                  offset: Offset(0, 0),
-                                  spreadRadius: 1,
-                                )
-                              ]
+                      decoration: ShapeDecoration(
+                          color:Color(0xFFD9E6E9),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25)
                           ),
+                          shadows: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              blurRadius: 8,
+                              offset: Offset(0, 0),
+                              spreadRadius: 1,
+                            )
+                          ]
+                      ),
 
-                          child: Stack(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(left: 15, top: 17),
-                                  child: Text('link 1',
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 17,
-                                      fontFamily: 'Inter',
-                                      fontWeight: FontWeight.w600,
+                      child: InkWell(
+                        borderRadius: BorderRadius.all(
+                            Radius.circular(25)
+                        ),
+                        onTap: (){},
+                        child: Container(
+
+                            child: Stack(
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(left: 15, top: 17),
+                                    child: Text('link 1',
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 17,
+                                        fontFamily: 'Inter',
+                                        fontWeight: FontWeight.w600,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 100, top: 30),
-                                  child: Image(image: AssetImage('assets/mrlink.png'),
-                                      width: 70),
-                                )
-                              ]
-                          )
+                                  Container(
+                                    margin: EdgeInsets.only(left: 100, top: 30),
+                                    child: Image(image: AssetImage('assets/mrlink.png'),
+                                        width: 70),
+                                  )
+                                ]
+                            )
+                        ),
                       ),
                     ),
-                    InkWell(
-                      borderRadius: BorderRadius.all(
-                          Radius.circular(5)
-                      ),
-                      onTap: (){
+                    Ink(
+                      width: (MediaQuery.of(context).size.width)*0.4,
+                      height:  (MediaQuery.of(context).size.height)*0.1,
 
-                      },
-                      child: Container(
-                        //padding: EdgeInsets.only(left:30),
-                        // margin: EdgeInsets.only(top: 10),
-                          width: (MediaQuery.of(context).size.width)*0.4,
-                          height:  (MediaQuery.of(context).size.height)*0.1,
-
-                          decoration: ShapeDecoration(
-                              color:Color(0xFFC4D9DD),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(25)
-                              ),
-                              shadows: [
-                                BoxShadow(
-                                  color: Colors.grey,
-                                  blurRadius: 8,
-                                  offset: Offset(0, 0),
-                                  spreadRadius: 1,
-                                )
-                              ]
+                      decoration: ShapeDecoration(
+                          color:Color(0xFFC4D9DD),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25)
                           ),
+                          shadows: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              blurRadius: 8,
+                              offset: Offset(0, 0),
+                              spreadRadius: 1,
+                            )
+                          ]
+                      ),
 
-                          child: Stack(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(left: 15, top: 17),
-                                  child: Text('link 2',
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 17,
-                                      fontFamily: 'Inter',
-                                      fontWeight: FontWeight.w600,
+                      child: InkWell(
+                        borderRadius: BorderRadius.all(
+                            Radius.circular(25)
+                        ),
+                        onTap: (){},
+                        child: Container(
+
+                            child: Stack(
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(left: 15, top: 17),
+                                    child: Text('link 2',
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 17,
+                                        fontFamily: 'Inter',
+                                        fontWeight: FontWeight.w600,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 100, top: 30),
-                                  child: Image(image: AssetImage('assets/mrlink.png'),
-                                      width: 70),
-                                )
-                              ]
-                          )
+                                  Container(
+                                    margin: EdgeInsets.only(left: 100, top: 30),
+                                    child: Image(image: AssetImage('assets/mrlink.png'),
+                                        width: 70),
+                                  )
+                                ]
+                            )
+                        ),
                       ),
                     ),
                   ],
@@ -181,104 +180,104 @@ class Mr_link extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    InkWell(
-                      borderRadius: BorderRadius.all(
-                          Radius.circular(5)
-                      ),
-                      onTap: (){
-                      },
-                      child: Container(
-                          width: (MediaQuery.of(context).size.width)*0.4,
-                          height:  (MediaQuery.of(context).size.height)*0.1,
+                    Ink(
+                      width: (MediaQuery.of(context).size.width)*0.4,
+                      height:  (MediaQuery.of(context).size.height)*0.1,
 
-                          decoration: ShapeDecoration(
-                              color:Color(0xFFBDD4D9),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(25)
-                              ),
-                              shadows: [
-                                BoxShadow(
-                                  color: Colors.grey,
-                                  blurRadius: 8,
-                                  offset: Offset(0, 0),
-                                  spreadRadius: 1,
-                                )
-                              ]
+                      decoration: ShapeDecoration(
+                          color:Color(0xFFBDD4D9),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25)
                           ),
+                          shadows: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              blurRadius: 8,
+                              offset: Offset(0, 0),
+                              spreadRadius: 1,
+                            )
+                          ]
+                      ),
 
-                          child: Stack(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(left: 15, top: 17),
-                                  child: Text('link 3',
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 17,
-                                      fontFamily: 'Inter',
-                                      fontWeight: FontWeight.w600,
+                      child: InkWell(
+                        borderRadius: BorderRadius.all(
+                            Radius.circular(25)
+                        ),
+                        onTap: (){},
+                        child: Container(
+
+                            child: Stack(
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(left: 15, top: 17),
+                                    child: Text('link 3',
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 17,
+                                        fontFamily: 'Inter',
+                                        fontWeight: FontWeight.w600,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 100, top: 30),
-                                  child: Image(image: AssetImage('assets/mrlink.png'),
-                                      width: 70),
-                                )
-                              ]
-                          )
+                                  Container(
+                                    margin: EdgeInsets.only(left: 100, top: 30),
+                                    child: Image(image: AssetImage('assets/mrlink.png'),
+                                        width: 70),
+                                  )
+                                ]
+                            )
+                        ),
                       ),
-
                     ),
+                    Ink(
+                      width: (MediaQuery.of(context).size.width)*0.4,
+                      height:  (MediaQuery.of(context).size.height)*0.1,
 
-
-                    InkWell(
-                      borderRadius: BorderRadius.all(
-                          Radius.circular(5)
-                      ),
-                      onTap: (){},
-                      child: Container(
-                        //padding: EdgeInsets.only(left:30),
-                        // margin: EdgeInsets.only(top: 10),
-                          width: (MediaQuery.of(context).size.width)*0.4,
-                          height:  (MediaQuery.of(context).size.height)*0.1,
-
-                          decoration: ShapeDecoration(
-                              color:Color(0xFFA1B9BE),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(25)
-                              ),
-                              shadows: [
-                                BoxShadow(
-                                  color: Colors.grey,
-                                  blurRadius: 8,
-                                  offset: Offset(0, 0),
-                                  spreadRadius: 1,
-                                )
-                              ]
+                      decoration: ShapeDecoration(
+                          color:Color(0xFFA1B9BE),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25)
                           ),
+                          shadows: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              blurRadius: 8,
+                              offset: Offset(0, 0),
+                              spreadRadius: 1,
+                            )
+                          ]
+                      ),
 
-                          child: Stack(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(left: 15, top: 17),
-                                  child: Text('link 4',
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 17,
-                                      fontFamily: 'Inter',
-                                      fontWeight: FontWeight.w600,
+                      child: InkWell(
+                        borderRadius: BorderRadius.all(
+                            Radius.circular(25)
+                        ),
+                        onTap: (){},
+                        child: Container(
+
+                            child: Stack(
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(left: 15, top: 17),
+                                    child: Text('link 4',
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 17,
+                                        fontFamily: 'Inter',
+                                        fontWeight: FontWeight.w600,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 100, top: 30),
-                                  child: Image(image: AssetImage('assets/mrlink.png'),
-                                      width: 70),
-                                )
-                              ]
-                          )
+                                  Container(
+                                    margin: EdgeInsets.only(left: 100, top: 30),
+                                    child: Image(image: AssetImage('assets/mrlink.png'),
+                                        width: 70),
+                                  )
+                                ]
+                            )
+                        ),
                       ),
                     ),
                   ],
