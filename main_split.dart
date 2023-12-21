@@ -39,7 +39,6 @@ class _Main_Split extends State<Main_Split> with TickerProviderStateMixin {
     /// 탭 변경 애니메이션 시간
     animationDuration: const Duration(milliseconds: 200),
   );
-
   String? userName; // 닉네임 저장할 변수
 
   // 로그인 여부를 확인하고, 로그인된 사용자의 닉네임을 가져오는 함수
@@ -51,9 +50,9 @@ class _Main_Split extends State<Main_Split> with TickerProviderStateMixin {
       String? userEmail = prefs.getString('email'); // 'email' 키로 저장된 값을 불러옴
       if (userEmail != null) {
         final QuerySnapshot<Map<String, dynamic>> userQuery = await FirebaseFirestore.instance
-        .collection('Mypage')
-        .where("email", isEqualTo: userEmail)
-        .get();
+            .collection('Mypage')
+            .where("email", isEqualTo: userEmail)
+            .get();
 
         // 쿼리 결과에서 문서 가져오기
         final List<QueryDocumentSnapshot<Map<String, dynamic>>> documents = userQuery.docs;
@@ -61,15 +60,15 @@ class _Main_Split extends State<Main_Split> with TickerProviderStateMixin {
           // 문서가 존재하면 첫 번째 문서의 참조를 얻기
           final DocumentSnapshot<Map<String, dynamic>> userSnapshot = documents.first;
           setState(() {
-            userName = userSnapshot['nickname']; 
+            userName = userSnapshot['nickname'];
           });
           print(userName);
         } else {
           print('No documents found for the given email.');
         }
       } else { null;
-        // 로그인이 되어 있지만 이메일 정보가 없는 경우의 처리
-        print('No documents found for the given email.');
+      // 로그인이 되어 있지만 이메일 정보가 없는 경우의 처리
+      print('No documents found for the given email.');
       }
     }
     else {
@@ -91,7 +90,7 @@ class _Main_Split extends State<Main_Split> with TickerProviderStateMixin {
         ),
         home: Scaffold(
           appBar: AppBar(
-              title: Text('  ${userName ?? '이정휘'}', style: TextStyle(
+              title: Text('  ${userName ?? ''}', style: TextStyle(
                 color: Color(0xFF333333),
                 fontSize: 30,
                 fontFamily: 'Inter',
@@ -707,74 +706,77 @@ class _Main_Split extends State<Main_Split> with TickerProviderStateMixin {
     );
   }
   Widget selfDiagnosis(){
-    return InkWell(
-      //splashColor: Colors.white12.withOpacity(0.9),
-      //highlightColor: Colors.white.withOpacity(0.9),
-      //splashColor: Colors.cyanAccent.withOpacity(0.4),
-      borderRadius: BorderRadius.all(
-          Radius.circular(5)
-      ),
-      onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => PageDiagnosis())
-      ),
-      child: Container(
-        //padding: EdgeInsets.all(5),
-        //margin: EdgeInsets.only(top: 20),
-          width: (MediaQuery
-              .of(context)
-              .size
-              .width)*0.9,
-          height: 160,
-          decoration: ShapeDecoration(
-              color:Color(0xFFC3E9E4),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25)
-              ),
-              shadows: [
-                BoxShadow(
-                  color: Color(0x33131419),
-                  blurRadius: 20,
-                  offset: Offset(0, 0),
-                  spreadRadius: 2,
-                )
-              ]
+    return Ink(
+      width: (MediaQuery
+          .of(context)
+          .size
+          .width)*0.9,
+      height: 160,
+      decoration: ShapeDecoration(
+          color:Color(0xFFC3E9E4),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(25)
           ),
-          //self 박스 안
-          child: Stack(
-              children: [
-                Container(
-                  margin: EdgeInsets.only(left: 25, top: 28),
-                  child: Text('Self Diagnosis',
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                      color: Color(0xFF333333),
-                      fontSize: 26,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w700,
-                      height: 0,
-                    ),
-                  ),
-                ),
-                Container(
-                    margin: EdgeInsets.only(left: 25, top: 60),
-                    child: Text(
-                        "\n\nLet's test\nIf you have panic disorder",
+          shadows: [
+            BoxShadow(
+              color: Color(0x33131419),
+              blurRadius: 10,
+              offset: Offset(0, 0),
+              spreadRadius: 2,
+            )
+          ]
+      ),
+      child: InkWell(
+        //splashColor: Colors.white12.withOpacity(0.9),
+        //highlightColor: Colors.white.withOpacity(0.9),
+        //splashColor: Colors.cyanAccent.withOpacity(0.4),
+        borderRadius: BorderRadius.all(
+            Radius.circular(25)
+        ),
+        onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => PageDiagnosis())
+        ),
+        child: Container(
+            //self 박스 안
+            child: AspectRatio(
+              aspectRatio: 1/1,
+              child: Stack(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(left: 25, top: 28),
+                      child: Text('Self Diagnosis',
+                        textAlign: TextAlign.start,
                         style: TextStyle(
-                          color: Color(0xFF111901),
-                          fontSize: 17,
+                          color: Color(0xFF333333),
+                          fontSize: 26,
                           fontFamily: 'Inter',
-                          fontWeight: FontWeight.w400,
-                          height: 0,)
+                          fontWeight: FontWeight.w700,
+                          height: 0,
+                        ),
+                      ),
+                    ),
+                    Container(
+                        margin: EdgeInsets.only(left: 25, top: 60),
+                        child: Text(
+                            "\n\nLet's test\nIf you have panic disorder",
+                            style: TextStyle(
+                              color: Color(0xFF111901),
+                              fontSize: 17,
+                              fontFamily: 'Inter',
+                              fontWeight: FontWeight.w400,
+                              height: 0,)
+                        )
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 245, top: 55),
+                      child: Image(image: AssetImage('assets/icon_check.png'),
+                          width: 70),
                     )
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 245, top: 55),
-                  child: Image(image: AssetImage('assets/icon_check.png'),
-                      width: 70),
-                )
-              ]
-          )
+                  ]
+              ),
+            )
+        ),
       ),
     );
   }
