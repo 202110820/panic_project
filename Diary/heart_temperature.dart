@@ -179,7 +179,7 @@ class _DiaryExampleState extends State<DiaryExample> {
                         builder: (BuildContext context) {
                           return AlertDialog(
                             backgroundColor: Colors.white,
-                            title: Text("Record today's feelings.", textAlign: TextAlign.center, style: TextStyle(fontFamily: 'Inter',fontSize: 20),),
+                            title: Text("이모티콘을 통해\n오늘의 감정을 기록해보세요.", textAlign: TextAlign.center, style: TextStyle(fontFamily: 'Inter',fontSize: 18),),
                             content: Container(
                               margin: EdgeInsets.only(top: 20),
                               height: MediaQuery.of(context).size.height * 0.40, // 그리드 높이 조정
@@ -250,12 +250,12 @@ class _DiaryExampleState extends State<DiaryExample> {
             Container(
               //color: Colors.blue,
               //   height: MediaQuery.of(context).size.height * 0.25,
-                width: MediaQuery.of(context).size.width * 0.80,
+              width: MediaQuery.of(context).size.width * 0.80,
                 child: Column(children: [
                   //SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
-                  Container(
-                    child: Text('How was your day today?', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: Color(0xFFA2C4C9),),textAlign: TextAlign.center,),
-                  ),
+                    Container(
+                      child: Text('오늘 하루는 어땠나요?', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: Color(0xFFA2C4C9),),textAlign: TextAlign.center,),
+                    ),
 
                   //일기 작성
                   Container(
@@ -271,7 +271,7 @@ class _DiaryExampleState extends State<DiaryExample> {
                       textInputAction: TextInputAction.done,
                       decoration: InputDecoration(
                         border: InputBorder.none, // 입력 밑줄 제거
-                        hintText: "Type it here...",
+                        hintText: "이곳에 작성해주세요...",
                         hintStyle: TextStyle(fontSize: 16, color: Color.fromRGBO(105, 108, 108, 1)),
                       ),
                     ),
@@ -302,6 +302,7 @@ class _DiaryExampleState extends State<DiaryExample> {
                     print('Today Emoji is: $selectedEmoji');
 
                     // DB 저장!
+                    //addCalendar(DateTime recordDate, String diary, String emotion, String temperature, String email)
                     addCalendar(widget.selectedDay, diaryText, selectedEmoji, (temperature.toInt()).toString(), widget.email);
 
                     Navigator.pop( // 이전 화면 (캘린더 화면)
@@ -315,34 +316,34 @@ class _DiaryExampleState extends State<DiaryExample> {
                         builder:(BuildContext context){
                           return AlertDialog(
                             content: Text("\n모든 항목을 채워주세요!",style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w400,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
                                 color: Colors.black
                             ),
-                              textAlign: TextAlign.center,),
+                            textAlign: TextAlign.center,),
                             actions: <Widget>[
                               Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                      child: const Text('OK',style: TextStyle(
-                                          fontSize: 12,
-                                          fontFamily: 'Inter',
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white
-                                      ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Color(0xFF62B6B6),
-                                        fixedSize: const Size(80, 35),
-                                        //padding: const EdgeInsets.fromLTRB(0,0,10,0),
-                                      ),
+                                children: [
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: const Text('OK',style: TextStyle(
+                                    fontSize: 12,
+                                    fontFamily: 'Inter',
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white
                                     ),
-                                  ]
+                                    textAlign: TextAlign.center,
+                                    ),
+                                    style: ElevatedButton.styleFrom(
+                                    primary: Color(0xFF62B6B6),
+                                    fixedSize: const Size(80, 35),
+                                    //padding: const EdgeInsets.fromLTRB(0,0,10,0),
+                                    ),
+                                  ),
+                                ]
                               ),
                             ],
                           );
@@ -401,6 +402,7 @@ class _DiaryExampleState extends State<DiaryExample> {
                             ),
                             SizedBox(height: 20,),
                             Container(
+                              height: MediaQuery.of(context).size.height * 0.50,
                               child: Image.asset('assets/Calendar/TemperatureGuide.png'),
                             ),
                           ],),
@@ -420,8 +422,8 @@ class _DiaryExampleState extends State<DiaryExample> {
 
                     //문구
                     Container(
-                        child: Text("What's the temperature\nof your mind today?", textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 22, color: Color.fromRGBO(60, 60, 60, 1), fontWeight: FontWeight.w700, fontFamily: 'Inter'))
+                        child: Text("오늘 당신의 마음 온도는\n몇 도였나요?", textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 24, color: Color.fromRGBO(60, 60, 60, 1), fontWeight: FontWeight.w700, fontFamily: 'Inter'))
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.03,),
                     Container(
