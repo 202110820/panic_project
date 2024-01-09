@@ -8,12 +8,14 @@
 - 구글 맵을 이용하여 공황증상이 일어난 장소를 저장할 수 있다.
 
 
+
 ## 1. 기술 스택
 - IDE: Android Studio
 - Front: Flutter
 - Back-end: Google Cloud API
 - Database: Firebase
 - Design: Figma
+
 
 
 ## 2. 개발환경 구축
@@ -29,6 +31,7 @@
 ### 2-2. Google Cloud API
 - 
   
+
 
 
 ## 3. 기능 정리
