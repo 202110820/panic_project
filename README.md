@@ -27,7 +27,7 @@
 - Firebase 프로젝트 생성 후, 빌드에 있는 Authentication 기능을 통해 이메일/비밀번호로 로그인 인증 환경을 구축한다.
     
 ### 2-2. Google Cloud API
-    - 
+- 
   
 
 
