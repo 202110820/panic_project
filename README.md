@@ -16,4 +16,5 @@
 
 ## 3. 기능 정리
 ### [메인화면]
-- 
+- ![image](https://github.com/202110820/panic_project/assets/95207365/765879cd-bdd4-4b5b-b407-90da0c128e06)
+
