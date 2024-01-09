@@ -6,10 +6,10 @@
 - 캘린더에 자신의 감정이나 일기 등을 기록할 수 있다.
 - 구글 맵을 이용하여 공황증상이 일어난 장소를 저장할 수 있다.
 
-## 1. 개발 환경
+## * 1. 개발 환경
 - Front: Flutter, Android Studio
 - Back-end: Firebase, Google Cloud API
 - 디자인: Figma
-  ## 1-1. 개발 환경 구축
+  ## - 1-1. 개발 환경 구축
 
 
