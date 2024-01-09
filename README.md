@@ -23,6 +23,7 @@
           npm install -g firebase-tools
       
     - Flutter SDK 설치
+      [](https://docs.flutter.dev/get-started/install)
 
 
 ## 3. 기능 정리
