@@ -10,6 +10,6 @@
 - Front: Flutter, Android Studio
 - Back-end: Firebase, Google Cloud API
 - 디자인: Figma
-## - 1-1. 개발 환경 구축
+## 1-1. 개발 환경 구축
 
 
