@@ -9,15 +9,19 @@
 
 
 ## 1. 기술 스택
-- Front: Flutter, Android Studio
-- Back-end: Firebase, Google Cloud API
+- IDE: Android Studio
+- Front: Flutter
+- Back-end: Google Cloud API
+- Database: Firebase
 - Design: Figma
 
 
 ## 2. 개발환경 구축
 * 2-1. Firebase 설정
     - Firebase CLI 설치
-      <mark>npm install -g firebase-tools</mark>
+      
+          npm install -g firebase-tools
+      
     - Flutter SDK 설치
 
 
