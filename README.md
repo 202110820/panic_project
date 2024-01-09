@@ -15,7 +15,10 @@
 
 
 ## 2. 개발환경 구축
-- 음.. 간단히 구글 API 받는 과정이랑...뭐... firebase 연결하는거.. 적어놔야하나
+* 2-1. Firebase 설정
+    - Firebase CLI 설치
+      <mark>npm install -g firebase-tools</mark>
+    - Flutter SDK 설치
 
 
 ## 3. 기능 정리
