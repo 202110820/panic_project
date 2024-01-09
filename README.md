@@ -17,12 +17,13 @@
 
 
 ## 2. 개발환경 구축
-* 2-1. Firebase 설정
+* 2-1. Firebase [설정](https://firebase.google.com/?hl=ko)
     - Firebase CLI 설치
       
           npm install -g firebase-tools
       
     - Flutter SDK [설치하기](https://docs.flutter.dev/get-started/install)
+    - Flutter 앱에 Firebase를 등록하고 초기화하여 작업공간을 준비한다. 
 
 
 ## 3. 기능 정리
