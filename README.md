@@ -9,7 +9,7 @@
 ## 1. 기술 스택
 - Front: Flutter, Android Studio
 - Back-end: Firebase, Google Cloud API
-- 디자인: Figma
+- Design: Figma
 
 ## 2. 개발환경 구축
 - 음.. 간단히 구글 API 받는 과정이랑...뭐... firebase 연결하는거.. 적어놔야하나
