@@ -42,7 +42,7 @@
 
 |<center>메인화면</center>
 |:---------------------:
-|![메인화면](https://github.com/202110820/panic_project/assets/95207365/765879cd-bdd4-4b5b-b407-90da0c128e06)
+|![메인화면](https://github.com/202110820/panic_project/assets/95207365/d17324c3-7fdf-4d76-8ada-78b3df9e089f)
 
 ### [공황장애 더 알아보기]
 - 공황장애 탭에서는 공황장애에 관한 전반적인 설명과 원인 및 증상에 대해 알아볼 수 있다.
