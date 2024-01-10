@@ -60,22 +60,31 @@
 
 |<center>자가진단</center>|<center>결과</center>
 |:-----:|:-------:
-|![자가진단항목](https://github.com/202110820/panic_project/assets/95207365/f2df82e9-1215-448b-9dcb-199a46061846)|![진단결과](https://github.com/202110820/panic_project/assets/95207365/4a1255a1-147b-40b3-900b-0f5e354e730d)
+|![자가진단항목](https://github.com/202110820/panic_project/assets/95207365/25c7ecbb-3d44-4036-a364-8a02888bc64f)|![진단결과](https://github.com/202110820/panic_project/assets/95207365/380057ea-2b3a-4285-9532-425a53d9a201)
 
 
 ### [로그인 및 회원가입]
 - 
 |<center>로그인</center>|<center>회원가입</center>
 |:-----:|:-------:
-|![로그인](https://github.com/202110820/panic_project/assets/95207365/68cb8464-250a-492c-8a11-b618c53fd367)|![회원가입](https://github.com/202110820/panic_project/assets/95207365/d695d3dc-4b54-44c0-846f-11273f5bd18b)
+|![로그인](https://github.com/202110820/panic_project/assets/95207365/2f8e8e70-9f37-4d51-ba47-21050f3ff72c)|![회원가입](https://github.com/202110820/panic_project/assets/95207365/4579d6b2-4f20-4de5-8140-54c6b1ed8807)
 
 
 ### [마이페이지]
+|<center>마이페이지</center>
+|:---------------------:
+|![마이페이지](https://github.com/202110820/panic_project/assets/95207365/55295adc-2b35-47ad-a066-75263eae6b9c)
 
 
 ### [다이어리]
+|<center>캘린더 화면</center>|<center>마음온도 설정</center>|<center>일기 작성</center>|<center>기록 날짜 내용 수정 및 삭제</center>    
+|:----:|:-------:|:-------:|:-------:
+|![캘린더](https://github.com/202110820/panic_project/assets/95207365/46be1880-6d55-4e3c-9f40-4ed8cfc2749e)|![마음온도 설정](https://github.com/202110820/panic_project/assets/95207365/41c2d803-539b-4411-98cb-1f58a679d794)|![일기 작성](https://github.com/202110820/panic_project/assets/95207365/c6263d79-879b-4e3d-948e-26c7f9c4b7c8)|![기록 날짜 관리 및 수정](https://github.com/202110820/panic_project/assets/95207365/13c5add3-2141-42f2-a646-1b64bf31de98)
 
 
 ### [마이 맵]
+|<center>구글 맵 화면</center>|<center>저장된 장소 리스트</center>|<center>장소 리스트 관리 및 삭제</center>    
+|:----:|:-------:|:-------:
+|![맵](https://github.com/202110820/panic_project/assets/95207365/69197e4d-27f2-4d80-9164-b75a04e3dacc)|![저장된 장소 리스트](https://github.com/202110820/panic_project/assets/95207365/3966645f-95f3-4738-8a3f-6737966d3e63)|![리스트 관리 및 삭제](https://github.com/202110820/panic_project/assets/95207365/9e9c7b9d-6d64-4c15-8639-c2091b43f50b)
 
 
