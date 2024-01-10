@@ -54,9 +54,20 @@
 |![공황장애원인](https://github.com/202110820/panic_project/assets/95207365/9c693d99-1463-48bb-a2c4-5305a51eae06)|![항우울제](https://github.com/202110820/panic_project/assets/95207365/db818960-2a0f-40b4-999b-c95c328e9831)|![호흡훈련](https://github.com/202110820/panic_project/assets/95207365/3fdaf28f-aa68-415c-a1a2-09d01396cee5)
 
 ### [자가진단]
+- 사용자의 공황 경험 여부를 조사하고, 심리적인 어려움을 점검 및 예방하기 위한 자가진단을 제공한다.
+- 문항은 총 13가지로 구성되어 있으며 '예' 또는 '아니오'로 답할 수 있다.
+- 사용자의 응답에 따른 공황장애 의심 여부를 결과 화면으로 보여준다.
+
+|<center>자가진단</center>|<center>결과</center>
+|:-----:|:-------:
+|![자가진단항목](https://github.com/202110820/panic_project/assets/95207365/f2df82e9-1215-448b-9dcb-199a46061846)|![진단결과](https://github.com/202110820/panic_project/assets/95207365/4a1255a1-147b-40b3-900b-0f5e354e730d)
 
 
-### [회원가입 및 로그인]
+### [로그인 및 회원가입]
+- 
+|<center>로그인</center>|<center>회원가입</center>
+|:-----:|:-------:
+|![로그인](https://github.com/202110820/panic_project/assets/95207365/68cb8464-250a-492c-8a11-b618c53fd367)|![회원가입](https://github.com/202110820/panic_project/assets/95207365/d695d3dc-4b54-44c0-846f-11273f5bd18b)
 
 
 ### [마이페이지]
