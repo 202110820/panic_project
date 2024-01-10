@@ -31,7 +31,7 @@
 - [Google Cloud 서비스](https://cloud.google.com/?hl=ko)
   
 
-
+<br/><br/>  
 
 ## 3. 기능 정리
 ### [메인화면]
