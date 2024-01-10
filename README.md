@@ -8,7 +8,7 @@
 - 캘린더에 자신의 감정이나 일기 등을 기록할 수 있다.
 - 구글 맵을 이용하여 공황증상이 일어난 장소를 저장할 수 있다.
 
-<br/><br/><br/>  
+<br/><br/>  
 
 ## 1. 기술 스택
 - IDE: Android Studio
@@ -17,7 +17,7 @@
 - Database: Firebase
 - Design: Figma
 
-<br/><br/><br/>  
+<br/><br/>  
 
 ## 2. 개발환경 구축
 ### 2-1. Firebase [설정](https://firebase.google.com/?hl=ko)
@@ -33,7 +33,7 @@
 - [Google Cloud 서비스](https://cloud.google.com/?hl=ko)
   
 
-<br/><br/><br/>  
+<br/><br/>  
 
 ## 3. 기능 정리
 ### [메인화면]
@@ -46,7 +46,7 @@
 |:---------------------:
 |![메인화면](https://github.com/202110820/panic_project/assets/95207365/d17324c3-7fdf-4d76-8ada-78b3df9e089f)
 
-<br/><br/><br/>  
+<br/><br/>  
 
 ### [공황장애 더 알아보기]
 - 공황장애 탭에서는 공황장애에 관한 전반적인 설명과 원인 및 증상에 대해 알아볼 수 있다.
@@ -57,7 +57,7 @@
 |:----:|:-------:|:-------:
 |![공황장애원인](https://github.com/202110820/panic_project/assets/95207365/9c693d99-1463-48bb-a2c4-5305a51eae06)|![항우울제](https://github.com/202110820/panic_project/assets/95207365/db818960-2a0f-40b4-999b-c95c328e9831)|![호흡훈련](https://github.com/202110820/panic_project/assets/95207365/3fdaf28f-aa68-415c-a1a2-09d01396cee5)
 
-<br/><br/><br/>  
+<br/><br/>  
 
 ### [자가진단]
 - 사용자의 공황 경험 여부를 조사하고, 심리적인 어려움을 점검 및 예방하기 위한 자가진단을 제공한다.
@@ -68,7 +68,7 @@
 |:-----:|:-------:
 |![자가진단항목](https://github.com/202110820/panic_project/assets/95207365/25c7ecbb-3d44-4036-a364-8a02888bc64f)|![진단결과](https://github.com/202110820/panic_project/assets/95207365/380057ea-2b3a-4285-9532-425a53d9a201)
 
-<br/><br/><br/>  
+<br/><br/>  
 
 ### [로그인 및 회원가입]
 - 
@@ -76,25 +76,25 @@
 |:-----:|:-------:
 |![로그인](https://github.com/202110820/panic_project/assets/95207365/2f8e8e70-9f37-4d51-ba47-21050f3ff72c)|![회원가입](https://github.com/202110820/panic_project/assets/95207365/4579d6b2-4f20-4de5-8140-54c6b1ed8807)
 
-<br/><br/><br/>  
+<br/><br/>  
 
 ### [마이페이지]
 |<center>마이페이지</center>
 |:---------------------:
 |![마이페이지](https://github.com/202110820/panic_project/assets/95207365/55295adc-2b35-47ad-a066-75263eae6b9c)
 
-<br/><br/><br/>  
+<br/><br/>  
 
 ### [다이어리]
 |<center>캘린더 화면</center>|<center>마음온도 설정</center>|<center>일기 작성</center>|<center>기록 날짜 내용 수정 및 삭제</center>    
 |:----:|:-------:|:-------:|:-------:
 |![캘린더](https://github.com/202110820/panic_project/assets/95207365/46be1880-6d55-4e3c-9f40-4ed8cfc2749e)|![마음온도 설정](https://github.com/202110820/panic_project/assets/95207365/41c2d803-539b-4411-98cb-1f58a679d794)|![일기 작성](https://github.com/202110820/panic_project/assets/95207365/c6263d79-879b-4e3d-948e-26c7f9c4b7c8)|![기록 날짜 관리 및 수정](https://github.com/202110820/panic_project/assets/95207365/13c5add3-2141-42f2-a646-1b64bf31de98)
 
-<br/><br/><br/>  
+<br/><br/>  
 
 ### [마이 맵]
 |<center>구글 맵 화면</center>|<center>저장된 장소 리스트</center>|<center>장소 리스트 관리 및 삭제</center>    
 |:----:|:-------:|:-------:
 |![맵](https://github.com/202110820/panic_project/assets/95207365/69197e4d-27f2-4d80-9164-b75a04e3dacc)|![저장된 장소 리스트](https://github.com/202110820/panic_project/assets/95207365/3966645f-95f3-4738-8a3f-6737966d3e63)|![리스트 관리 및 삭제](https://github.com/202110820/panic_project/assets/95207365/9e9c7b9d-6d64-4c15-8639-c2091b43f50b)
 
-<br/><br/><br/>  
+<br/><br/>  
