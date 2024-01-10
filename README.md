@@ -49,7 +49,7 @@
   
 |<center>공황장애</center>|<center>약물치료</center>|<center>CBT</center>    
 |----|-------:|:-------:
-|row2|data2-1 |data2-2 
+|![공황장애원인](https://github.com/202110820/panic_project/assets/95207365/9c693d99-1463-48bb-a2c4-5305a51eae06)|![항우울제](https://github.com/202110820/panic_project/assets/95207365/db818960-2a0f-40b4-999b-c95c328e9831)|![호흡훈련](https://github.com/202110820/panic_project/assets/95207365/3fdaf28f-aa68-415c-a1a2-09d01396cee5)
 
 ### [자가진단]
 
