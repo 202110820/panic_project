@@ -13,7 +13,7 @@ import 'package:contact2/map/check_login_status.dart';
 import 'package:contact2/model/model_auth.dart';
 import 'package:contact2/information/What_is_panic_disorder/pd_1.dart';
 // ...
-
+import 'package:flutter/services.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp( // firebase 초기화
@@ -44,12 +44,15 @@ class _MyHomePage extends State<MyApp> with TickerProviderStateMixin {
   }
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => UserAuthProvider()),
       ],
 
       child: MaterialApp(
+
+        debugShowCheckedModeBanner: false,
           theme: ThemeData(
             useMaterial3: true,
           ),
@@ -62,17 +65,17 @@ class _MyHomePage extends State<MyApp> with TickerProviderStateMixin {
               type: BottomNavigationBarType.fixed,
               items: const <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.heart_broken),
-                    label: "Diagnosis"),
+                    icon: Icon(Icons.volunteer_activism_rounded),
+                    label: "자가진단"),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.calendar_month),
-                    label: "Diary"),
+                    label: "마음 일기"),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.map_outlined),
-                    label: "My Map"),
+                    label: "마이 맵"),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.person),
-                    label: "My Page"),
+                    label: "마이페이지"),
               ],
               selectedItemColor: Colors.black,
               selectedLabelStyle: TextStyle(color: Colors.black),
