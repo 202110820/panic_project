@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'mypage.dart';
-import 'map.dart';
-import 'map/map_main.dart';
 import 'package:provider/provider.dart';
 import 'main_split.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -11,7 +8,7 @@ import 'package:contact2/Mypage/splash_screen.dart';
 import 'package:contact2/Diary/check_login_status.dart';
 import 'package:contact2/map/check_login_status.dart';
 import 'package:contact2/model/model_auth.dart';
-import 'package:contact2/information/What_is_panic_disorder/pd_1.dart';
+
 // ...
 import 'package:flutter/services.dart';
 void main() async{
