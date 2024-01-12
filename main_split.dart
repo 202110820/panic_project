@@ -1,6 +1,5 @@
 import 'package:contact2/Self_Diagnosis/diagnosis_check.dart';
 import 'package:flutter/material.dart';
-import 'map.dart';
 import 'package:flutter/services.dart';
 //information
 import 'information/Cause/pd_cause_1.dart';
