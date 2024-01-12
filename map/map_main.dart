@@ -92,120 +92,189 @@ class _HomePageState extends State<HomePage> {
             }),
           ),
           body: Column(
-            //mainAxisAlignment: MainAxisAlignment.center,
-            //crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
+            children: [
               Container(
-                height: 35,
+                height:(MediaQuery.of(context).size.height)*0.04,
               ),
               //큰 타이틀
-              SizedBox(
-                //padding: EdgeInsets.only(left: 20),
-                width: (MediaQuery.of(context).size.width),
-                child:
-                Text('My Map',
-                  style: TextStyle(fontSize: 37,
-                      fontFamily: 'Inter', fontWeight: FontWeight.w800,
-                      color: Colors.black
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              SizedBox(height: 15,),
               Container(
-                width: (MediaQuery.of(context).size.width)*0.6,
-                padding: EdgeInsets.zero,
-                margin: EdgeInsets.only(top:10, bottom: 20),
-                child: Image.asset('assets/Map.png',),
-                //color: Colors.red
-              ),
-              SizedBox(height: 15,),
-              //세부 타이틀
-              SizedBox(
-                //padding: EdgeInsets.only(left: 23),
+                padding: EdgeInsets.only(left: 20),
                 width: (MediaQuery.of(context).size.width),
                 child:
                 Center(
-                  child: Text('공황이 일어났던 위치를 저장하고\n알림을 받아보세요',
-                    style: TextStyle(fontSize: 18,
-                        fontFamily: 'Inter', fontWeight: FontWeight.w600,
-                        color: Color(0xFF6A9AA5)
+                  child: Text('마이 맵',
+                    style: TextStyle(fontSize: 37,
+                        fontFamily: 'Inter', fontWeight: FontWeight.w800,
+                        color: Colors.black
                     ),
                     textAlign: TextAlign.center,
                   ),
                 ),
               ),
-              SizedBox(height: 30,),
-              ElevatedButton(
-                child: Text("Load Google Map", style: TextStyle(color: Colors.white, fontSize: 20, fontFamily: 'Inter')),
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(200,30),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                  backgroundColor: Color(0xFF62B6B6),
-                  padding: EdgeInsets.only(top: 10, bottom:10, right: 20, left: 20),
 
-                ),
-                onPressed: () {
-
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return PlacePicker(
-                          apiKey: APIKeys.apiKey,
-                          //'AIzaSyC2kycO-3FBE0dNBhVbDrdHa3XYMUV7EXI',
-                          initialPosition: HomePage.kInitialPosition,
-                          useCurrentLocation: true,
-                          selectInitialPosition: true,
-                          usePlaceDetailSearch: true,
-                          onPlacePicked: (result) {
-
-                            selectedPlace = result;
-                            print('-----------');
-                            //print(result.adrAddress);
-                            print(result.geometry!.location.lng);
-                            print(result.geometry!.location.lat);
-
-                            // firebase에 업로드
-                            addMyMap(result.geometry!.location.lat, result.geometry!.location.lng, result.formattedAddress.toString(), widget.email);
-                            //print(result.formattedAddress);
-
-                            //print(result.addressComponents);
-                            // print(result.);
-                            //print(result.initial);
-                            //List<Location> locations = await locationFromAddress("Gronausestraat 710, Enschede");
-                            Navigator.of(context).pop();
-
-                            //setState(() {});
-                          },
-                        );
-                      },
+              //세부 타이틀
+              Container(
+                padding: EdgeInsets.only(left: 23),
+                width: (MediaQuery.of(context).size.width),
+                child:
+                Center(
+                  child: Text('My Map',
+                    style: TextStyle(fontSize: 25,
+                        fontFamily: 'Inter', fontWeight: FontWeight.w600,
+                        color: Color(0xFF6A9AA5)
                     ),
-                  );
-                },
-              ),
-              SizedBox(height: 10,),
-
-              ElevatedButton(
-                child: Text("My Location", style: TextStyle(color: Colors.white, fontSize: 20, fontFamily: 'Inter')),
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(200,30),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25),
                   ),
-                  backgroundColor: Color(0xFF62B6B6),
-                  padding: EdgeInsets.only(top: 10, bottom:10, right: 20, left: 20),
                 ),
-                onPressed: () {
-
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => MyLocation(email: widget.email)));
-                },
               ),
-              //selectedPlace == null
-              //  ? Container()
-              // : Text(selectedPlace!.formattedAddress ?? ""),
+
+              //이미지
+              Container(
+                //alignment: Alignment.bottomRight,
+                  margin: EdgeInsets.only(top: 25),
+                  child: Image.asset('assets/Map.png', width: 210,)
+              ),
+
+              //텍스트
+              Container(
+                  //padding: EdgeInsets.only(left: 10, right: 10,top: 15, bottom: 0),
+                  //margin: EdgeInsets.only(left:15, right: 15, bottom: 0, top: 15),
+
+                  child: Center(
+                    child: Text('\n\n공황이 일어났던 위치를\n저장하고 알림을 받아보세요 !',
+                      style: TextStyle(fontSize: 16,
+                          fontFamily: 'Inter', fontWeight: FontWeight.w500),
+                      textAlign: TextAlign.center,
+                    ),
+                  )
+              ),
+
+
+              //Start 버튼
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Ink(
+                      width: (MediaQuery.of(context).size.width)*0.36,
+                      height:  (MediaQuery.of(context).size.height)*0.1,
+
+                      decoration: ShapeDecoration(
+                          color:Color(0xFF62B6B6),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25)
+                          ),
+                          shadows: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              blurRadius: 10,
+                              offset: Offset(0, 0),
+                              spreadRadius: 1,
+                            )
+                          ]
+                      ),
+                      child: InkWell(
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(25)
+                          ),
+                          onTap: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return PlacePicker(
+                                    apiKey: APIKeys.apiKey,
+                                    initialPosition: HomePage.kInitialPosition,
+                                    useCurrentLocation: true,
+                                    selectInitialPosition: true,
+                                    usePlaceDetailSearch: true,
+                                    onPlacePicked: (result) {
+                                      selectedPlace = result;
+                                      // firebase에 업로드
+                                      addMyMap(result.geometry!.location.lat, result.geometry!.location.lng, result.formattedAddress.toString(), widget.email);
+                                      Navigator.of(context).pop();
+                                    },
+                                  );
+                                },
+                              ),
+                            );
+                          },
+                          child: Stack(
+                              children: [
+                                Center(
+                                  child: Container(
+                                    //margin: EdgeInsets.only(left: 15, top: 17),
+                                    child: Text('지도보기',
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 25,
+                                        fontFamily: 'Inter',
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ]
+                          )
+                      ),
+
+                    ),
+                    Ink(
+                      width: (MediaQuery.of(context).size.width)*0.36,
+                      height:  (MediaQuery.of(context).size.height)*0.1,
+
+                      decoration: ShapeDecoration(
+                          color:Color(0xFF62B6B6),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25)
+                          ),
+                          shadows: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              blurRadius: 10,
+                              offset: Offset(0, 0),
+                              spreadRadius: 1,
+                            )
+                          ]
+                      ),
+                      child: InkWell(
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(25)
+                          ),
+                          onTap: (){
+                            Navigator.push(
+                              context,
+                              PageRouteBuilder(
+                                pageBuilder: (context, animation1, animation2) => MyLocation(email: widget.email),
+                                transitionDuration: Duration.zero,
+                                reverseTransitionDuration: Duration.zero,
+                              ),
+                            );
+                          },
+                          child: Stack(
+                              children: [
+                                Center(
+                                  child: Container(
+                                    //margin: EdgeInsets.only(left: 15, top: 17),
+                                    child: Text('내 장소',
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 25,
+                                        fontFamily: 'Inter',
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ]
+                          )
+                      ),
+
+                    ),
+                  ],
+                ),
+              )
             ],
           )),
     );
