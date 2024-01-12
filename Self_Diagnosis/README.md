@@ -1,3 +1,0 @@
-- check_list.dart: 자가진단 체크 현황 리스트 화면
-- check_result_screen.dart: 자가진단 결과 화면
-- diagnosis_check.dart: 메인 자가진단 테스트 화면
