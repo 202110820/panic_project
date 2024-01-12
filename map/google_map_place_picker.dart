@@ -33,6 +33,7 @@ typedef PinBuilder = Widget Function(
     );
 
 final _markers = <Marker>{};
+
 class GoogleMapPlacePicker extends StatelessWidget {
 
   String? email; // email 저장할 변수
@@ -44,7 +45,7 @@ class GoogleMapPlacePicker extends StatelessWidget {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       bool isLogin = prefs.getBool('isLogin') ?? false;
-      _markers.clear();
+     // _markers.clear();
       //getLocations();
       if (isLogin) {
         String? userEmail = prefs.getString('email'); // 'email' 키로 저장된 값을 불러옴
@@ -68,8 +69,8 @@ class GoogleMapPlacePicker extends StatelessWidget {
   Future<void> getLocations() async {
     try {
       await getEmail();
-      print('사용자 이메일: ${email}');
-      _markers.clear();
+      //print('사용자 이메일: ${email}');
+      //_markers.clear();
       //getLocations();
       // Firebase에서 위치 데이터 가져오기
       QuerySnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore
@@ -85,23 +86,26 @@ class GoogleMapPlacePicker extends StatelessWidget {
           double lng = document.data()!['lng'] ?? 0.0;
           return {'address': address, 'lat': lat, 'lng': lng};
         }).toList();
+
+        await Future.delayed(const Duration(milliseconds: 100));
         _markers.clear();
         _markers.addAll(
-            latlngList.map(
-                    (e) => Marker(
-                  markerId: MarkerId(e['address'] as String),
-                  infoWindow: InfoWindow(title: e['address'] as String),
-                  alpha: 0.5,
+          latlngList.map(
+                (e) => Marker(
+              markerId: MarkerId(e['address'] as String),
+              infoWindow: InfoWindow(title: e['address'] as String),
+              alpha: 0.7,
 
-                  position: LatLng(
-                    e['lat'] as double,
-                    e['lng'] as double,
-                  ),
-                ),
+              position: LatLng(
+                e['lat'] as double,
+                e['lng'] as double,
+              ),
             ),
+          ),
         );
+        getLocations();
         //print('위도 경도 리스트: ${latlngList}');
-        print('!!!!!!!!!!!!!!!!!!!!!: ${_markers}');
+        //print('!!!!!!!!!!!!!!!!!!!!!: ${_markers}');
         latlngList = latlngList;
       }
     } catch (e) {
@@ -110,7 +114,6 @@ class GoogleMapPlacePicker extends StatelessWidget {
   }
 
   GoogleMapPlacePicker({
-
     Key? key,
     required this.initialTarget,
     required this.appBarKey,
@@ -211,8 +214,7 @@ class GoogleMapPlacePicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //_markers.clear();
-
-    getLocations();
+    //getLocations();
     return Stack(
       children: <Widget>[
         _buildGoogleMap(context,),
@@ -235,10 +237,9 @@ class GoogleMapPlacePicker extends StatelessWidget {
           //_markers.clear();
           getLocations();
           //getLocations();
-          print('!!!!!!!!!!!!!!!!!!!!!: ${_markers}');
+          //print('!!!!!!!!!!!!!!!!!!!!!: ${_markers}');
 
           return GoogleMap(
-
             markers: _markers,
             myLocationButtonEnabled: false,
             compassEnabled: false,
@@ -441,7 +442,7 @@ class GoogleMapPlacePicker extends StatelessWidget {
               ),
             ),
             child: Text(
-              "Select here",
+              "선택하기",
               style: TextStyle(fontSize: 16, color: Colors.white),
             ),
 
